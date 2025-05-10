@@ -5,3 +5,5 @@ Consegui publicar no github.
 Agora publiquei usando o terminal.
 
 será publicado com fabric e azure devops
+
+Algumas mudanças foram testadas
