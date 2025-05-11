@@ -1,6 +1,10 @@
 table transacoes
 	lineageTag: a2ea0539-01d0-4db8-80c6-e636bd9e661b
 
+	measure Measure = 1
+		formatString: 0
+		lineageTag: 426ca903-554a-47b0-bba1-58442b981d16
+
 	column ID
 		dataType: double
 		lineageTag: 083579d1-7f18-4161-9ab4-29779f8bbfb9
