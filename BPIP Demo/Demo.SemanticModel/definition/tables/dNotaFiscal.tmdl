@@ -1,0 +1,26 @@
+table dNotaFiscal
+	lineageTag: eaa6a31d-1032-406d-8fca-043192684b7d
+
+	column id_nr_nota_fis
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8e2d1718-1662-420f-bad5-b008e86f6d5b
+		summarizeBy: none
+		sourceColumn: id_nr_nota_fis
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dNotaFiscal = m
+		mode: import
+		queryGroup: Dimensão
+		source =
+				let
+				    Fonte = Sql.Database(server, Banco, [CreateNavigationProperties=false, Query="Select * from vw_dNotaFiscal"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

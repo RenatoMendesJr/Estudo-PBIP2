@@ -1,0 +1,172 @@
+table c_filtros_temporias
+	lineageTag: df77da13-9c84-403d-8094-5c496dae29c1
+
+	calculationGroup
+		precedence: 3
+
+		calculationItem D-7 =
+				VAR _Hoje = TODAY( ) - 1
+				VAR _Data = _Hoje - 6
+				VAR _Datas = DATESBETWEEN( dCalendario[data], _Data, _Hoje )
+				RETURN
+				    CALCULATE(
+				        SELECTEDMEASURE( ),
+				        REMOVEFILTERS( d_calendario_filtros),
+				        KEEPFILTERS( _Datas )
+				    )
+
+		calculationItem 'Últ 12 Meses' =
+				VAR _Hoje = TODAY( )
+				VAR _Maior_Data = EOMONTH( _HOJE, -1 )
+				VAR _Menor_Data = EOMONTH( _HOJE, -13 ) + 1
+				VAR _DATAS =
+				    DATESBETWEEN( dCalendario[data], _Menor_Data, _Maior_Data )
+				RETURN
+				    CALCULATE(
+				        SELECTEDMEASURE( ),
+				        REMOVEFILTERS( d_calendario_filtros),
+				        KEEPFILTERS( _DATAS )
+				    )
+
+		calculationItem 'Últ Semana' =
+				VAR _Semana_Anterior =
+				    CALCULATE(
+				        MAX( dCalendario[semana_do_ano_serial] ),
+				        REMOVEFILTERS( dCalendario ),
+				        dCalendario[passado] = TRUE( )
+				    )
+				        - 1
+				RETURN
+				    CALCULATE(
+				        SELECTEDMEASURE( ),
+				        REMOVEFILTERS( d_calendario_filtros),
+				        KEEPFILTERS(
+				            dCalendario[semana_do_ano_serial] = _Semana_Anterior
+				        )
+				    )
+
+		calculationItem 'Esta Semana' =
+				VAR _Semana_Atual =
+				    CALCULATE(
+				        MAX( dCalendario[semana_do_ano_serial] ),
+				        REMOVEFILTERS( dCalendario ),
+				        dCalendario[passado] = TRUE( )
+				    )
+				RETURN
+				    CALCULATE(
+				        SELECTEDMEASURE( ),
+				        REMOVEFILTERS( d_calendario_filtros),
+				        KEEPFILTERS(
+				            dCalendario[semana_do_ano_serial] = _Semana_Atual
+				        )
+				    )
+
+		calculationItem 'Este Mês' =
+				VAR _Mes_Atual =
+				    CALCULATE(
+				        MAX( dCalendario[ano_mes_numerico] ),
+				        REMOVEFILTERS( dCalendario ),
+				        dCalendario[passado] = TRUE( )
+				    )
+				RETURN
+				    CALCULATE(
+				        SELECTEDMEASURE( ),
+				        REMOVEFILTERS( d_calendario_filtros),
+				        KEEPFILTERS( dCalendario[ano_mes_numerico] = _Mes_Atual )
+				    )
+
+		calculationItem 'Últ Mês' =
+				VAR _Hoje = TODAY( )
+				VAR _Maior_Data = EOMONTH( _Hoje, -1 )
+				VAR _Menor_Data = EOMONTH( _Hoje, -2 ) + 1
+				VAR _Datas =
+				    DATESBETWEEN( dCalendario[data], _Menor_Data, _Maior_Data )
+				RETURN
+				    CALCULATE(
+				        SELECTEDMEASURE( ),
+				        REMOVEFILTERS( d_calendario_filtros),
+				        KEEPFILTERS( _Datas )
+				    )
+
+		calculationItem 'Este Trim.' =
+				VAR _Hoje = TODAY( )
+				VAR _Trimestre =
+				    CALCULATE(
+				        VALUES( dCalendario[quarter_ano] ),
+				        dCalendario[data] = _Hoje
+				    )
+				RETURN
+				    CALCULATE(
+				        SELECTEDMEASURE( ),
+				        REMOVEFILTERS( d_calendario_filtros),
+				        KEEPFILTERS( dCalendario[quarter_ano] = _Trimestre )
+				    )
+
+		calculationItem 'Últ Trim.' = ```
+				VAR _Hoje = TODAY( )
+				VAR _Datas =
+				    CALCULATETABLE(
+				        PREVIOUSQUARTER( dCalendario[data] ),
+				        AND(
+				            dCalendario[data] >= _Hoje,
+				            dCalendario[data] <= _Hoje + 1
+				        ),
+				        REMOVEFILTERS( dCalendario )
+				    )
+				RETURN
+				    CALCULATE(
+				        SELECTEDMEASURE( ),
+				        REMOVEFILTERS( d_calendario_filtros), 
+				        KEEPFILTERS( _Datas )
+				    )
+				```
+
+		calculationItem 'Este Ano' =
+				VAR _Hoje = TODAY( )
+				VAR _Ano = YEAR( _Hoje )
+				RETURN
+				    CALCULATE(
+				        SELECTEDMEASURE( ),
+				        REMOVEFILTERS( d_calendario_filtros ),
+				        KEEPFILTERS( dCalendario[ano] = _Ano )
+				    )
+
+		calculationItem 'Últ Ano' =
+				VAR _Hoje = TODAY( )
+				VAR _Ano = YEAR( TODAY( ) ) - 1
+				RETURN
+				    CALCULATE(
+				        SELECTEDMEASURE( ),
+				        REMOVEFILTERS( d_calendario_filtros),
+				        KEEPFILTERS( dCalendario[ano] = _Ano )
+				    )
+
+		calculationItem 'Custom.' = SELECTEDMEASURE( )
+
+		calculationItem D-1 =
+				VAR Hoje = TODAY( ) - 1
+				RETURN
+				    CALCULATE(
+				        SELECTEDMEASURE( ),
+				        REMOVEFILTERS( d_calendario_filtros),
+				        KEEPFILTERS( dCalendario[data] = Hoje )
+				    )
+
+	column Name
+		dataType: string
+		lineageTag: c704401e-0adc-4bea-bd37-b8c215318432
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		isHidden
+		lineageTag: 56058a56-605d-449c-8525-dd29ff446aae
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+

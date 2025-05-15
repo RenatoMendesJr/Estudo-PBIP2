@@ -1,0 +1,52 @@
+table fMetas_Reclamacao
+	lineageTag: 8254f487-e92f-4d85-88cd-50b530d41854
+
+	column Ano
+		dataType: int64
+		formatString: 0
+		lineageTag: 37422c1d-13cf-4e5a-a7fb-0bc9d9048631
+		summarizeBy: sum
+		sourceColumn: Ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column Meta
+		dataType: double
+		lineageTag: d01a6e61-6e2c-46d7-be49-4ddfc743d456
+		summarizeBy: sum
+		sourceColumn: Meta
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column TipoMeta
+		dataType: string
+		lineageTag: 46a53414-0d3d-4d58-b049-8539bc488667
+		summarizeBy: none
+		sourceColumn: TipoMeta
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_fmetas_reclamacao
+		dataType: int64
+		formatString: 0
+		lineageTag: a1177ddd-cdba-4c7e-87b3-ff073c5aaeac
+		summarizeBy: sum
+		sourceColumn: id_fmetas_reclamacao
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fMetas_Reclamacao = m
+		mode: import
+		queryGroup: Fato
+		source =
+				let
+				    Fonte = Sql.Database(server, Banco, [CreateNavigationProperties=false, Query="--Select * from vw_fMetas_Reclamacao#(lf)Select * from fMetas_Reclamacao"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

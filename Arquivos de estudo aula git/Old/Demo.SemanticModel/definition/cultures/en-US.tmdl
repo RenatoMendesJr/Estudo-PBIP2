@@ -1,0 +1,1655 @@
+cultureInfo en-US
+
+	linguisticMetadata =
+			{
+			  "Version": "4.1.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "moeda": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "moedas"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "moeda": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "moeda.moeda": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "moedas",
+			          "ConceptualProperty": "Moeda"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "moeda": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "moeda name": {
+			            "State": "Generated"
+			          }
+			        }
+			      ],
+			      "NameType": "Name"
+			    },
+			    "moeda.nome": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "moedas",
+			          "ConceptualProperty": "Nome"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "nome": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "moeda.formato": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "moedas",
+			          "ConceptualProperty": "Formato"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "formato": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "calendario": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "calendario"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "calendario": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "calendario.data": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "calendario",
+			          "ConceptualProperty": "Data"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "data": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        },
+			        {
+			          "information": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "fact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "info": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "statistic": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "document": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "figure": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "record": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "calendario.ano": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "calendario",
+			          "ConceptualProperty": "Ano"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ano": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "calendario.mes_ano": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "calendario",
+			          "ConceptualProperty": "MesAno"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mes ano": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "me ano": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "MesAno": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "calendario.mes_inicio": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "calendario",
+			          "ConceptualProperty": "MesInicio"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mes inicio": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "me inicio": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "MesInicio": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "calendario.mes_ano_num": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "calendario",
+			          "ConceptualProperty": "MesAnoNum"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "mes ano num": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "me ano num": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "MesAnoNum": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "me ano number": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        }
+			      ]
+			    },
+			    "transacoe": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "transacoes"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "transacoe": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "transacoe.ID": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "transacoes",
+			          "ConceptualProperty": "ID"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "ID": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "identification": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "identity": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "credential": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ]
+			    },
+			    "transacoe.data": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "transacoes",
+			          "ConceptualProperty": "Data"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "data": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        },
+			        {
+			          "information": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "fact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "info": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "statistic": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "document": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "figure": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "record": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "transacoe.total": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "transacoes",
+			          "ConceptualProperty": "Total"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "total": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "aggregate": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "overall": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ]
+			    },
+			    "transacoe.moeda": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "transacoes",
+			          "ConceptualProperty": "Moeda"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "moeda": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "transacoe.acumulado": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "transacoes",
+			          "ConceptualProperty": "Acumulado"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "acumulado": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "transacoe.AVG_total_USD": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "transacoes",
+			          "ConceptualProperty": "AVG Total USD"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "AVG total USD": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "USD": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "total USD": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "average total usd": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "avg aggregate usd": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "avg overall usd": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.591
+			          }
+			        },
+			        {
+			          "aggregate usd": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "overall usd": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "AVG USD": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "cotacoe": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Cotacoes"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "cotacoe": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "cotacoe.moeda": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Cotacoes",
+			          "ConceptualProperty": "Moeda"
+			        }
+			      },
+			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
+			      "Terms": [
+			        {
+			          "moeda": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "cotacoe.data_hora": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Cotacoes",
+			          "ConceptualProperty": "DataHora"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "data hora": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "DataHora": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        },
+			        {
+			          "information hora": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "fact hora": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "info hora": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "statistic hora": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.6
+			          }
+			        },
+			        {
+			          "document hora": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "figure hora": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        },
+			        {
+			          "record hora": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.582
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    },
+			    "cotacoe.cotacao": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Cotacoes",
+			          "ConceptualProperty": "Cotacao"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "cotacao": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "cotacoe.tipo_boletim": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Cotacoes",
+			          "ConceptualProperty": "TipoBoletim"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "tipo boletim": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "TipoBoletim": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "cotacoe.data": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Cotacoes",
+			          "ConceptualProperty": "Data"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "data": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "date": {
+			            "State": "Generated",
+			            "Weight": 0.7
+			          }
+			        },
+			        {
+			          "information": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "fact": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "info": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "statistic": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.736
+			          }
+			        },
+			        {
+			          "document": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "figure": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        },
+			        {
+			          "record": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.714
+			          }
+			        }
+			      ],
+			      "SemanticType": "Time"
+			    }
+			  },
+			  "Relationships": {
+			    "moeda_is_named_moeda": {
+			      "Binding": {
+			        "ConceptualEntity": "moedas"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "moeda": {
+			          "Target": {
+			            "Entity": "moeda"
+			          }
+			        },
+			        "moeda.moeda": {
+			          "Target": {
+			            "Entity": "moeda.moeda"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Name": {
+			            "Subject": {
+			              "Role": "moeda"
+			            },
+			            "Name": {
+			              "Role": "moeda.moeda"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "moedas_are_names_IDs_of_moedas"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "moeda"
+			            },
+			            "Object": {
+			              "Role": "moeda.moeda"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "moedas_have_moedas"
+			        }
+			      ]
+			    },
+			    "moeda_has_nome": {
+			      "Binding": {
+			        "ConceptualEntity": "moedas"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "moeda": {
+			          "Target": {
+			            "Entity": "moeda"
+			          }
+			        },
+			        "moeda.nome": {
+			          "Target": {
+			            "Entity": "moeda.nome"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "moeda"
+			            },
+			            "Object": {
+			              "Role": "moeda.nome"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "moedas_have_nome"
+			        }
+			      ]
+			    },
+			    "moeda_has_formato": {
+			      "Binding": {
+			        "ConceptualEntity": "moedas"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "moeda": {
+			          "Target": {
+			            "Entity": "moeda"
+			          }
+			        },
+			        "moeda.formato": {
+			          "Target": {
+			            "Entity": "moeda.formato"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "moeda"
+			            },
+			            "Object": {
+			              "Role": "moeda.formato"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "moedas_have_formatos"
+			        }
+			      ]
+			    },
+			    "calendario_has_data": {
+			      "Binding": {
+			        "ConceptualEntity": "calendario"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "calendario": {
+			          "Target": {
+			            "Entity": "calendario"
+			          }
+			        },
+			        "calendario.data": {
+			          "Target": {
+			            "Entity": "calendario.data"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendario"
+			            },
+			            "Object": {
+			              "Role": "calendario.data"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "calendarios_have_data"
+			        }
+			      ]
+			    },
+			    "calendario_has_ano": {
+			      "Binding": {
+			        "ConceptualEntity": "calendario"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "calendario": {
+			          "Target": {
+			            "Entity": "calendario"
+			          }
+			        },
+			        "calendario.ano": {
+			          "Target": {
+			            "Entity": "calendario.ano"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendario"
+			            },
+			            "Object": {
+			              "Role": "calendario.ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "calendarios_have_anos"
+			        }
+			      ]
+			    },
+			    "calendario_has_mes_ano": {
+			      "Binding": {
+			        "ConceptualEntity": "calendario"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "calendario": {
+			          "Target": {
+			            "Entity": "calendario"
+			          }
+			        },
+			        "calendario.mes_ano": {
+			          "Target": {
+			            "Entity": "calendario.mes_ano"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendario"
+			            },
+			            "Object": {
+			              "Role": "calendario.mes_ano"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "calendarios_have_mes_anos"
+			        }
+			      ]
+			    },
+			    "calendario_has_mes_inicio": {
+			      "Binding": {
+			        "ConceptualEntity": "calendario"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "calendario": {
+			          "Target": {
+			            "Entity": "calendario"
+			          }
+			        },
+			        "calendario.mes_inicio": {
+			          "Target": {
+			            "Entity": "calendario.mes_inicio"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendario"
+			            },
+			            "Object": {
+			              "Role": "calendario.mes_inicio"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "calendarios_have_mes_inicios"
+			        }
+			      ]
+			    },
+			    "calendario_has_mes_ano_num": {
+			      "Binding": {
+			        "ConceptualEntity": "calendario"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "calendario": {
+			          "Target": {
+			            "Entity": "calendario"
+			          }
+			        },
+			        "calendario.mes_ano_num": {
+			          "Target": {
+			            "Entity": "calendario.mes_ano_num"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendario"
+			            },
+			            "Object": {
+			              "Role": "calendario.mes_ano_num"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "calendarios_have_mes_ano_nums"
+			        }
+			      ]
+			    },
+			    "transacoe_has_ID": {
+			      "Binding": {
+			        "ConceptualEntity": "transacoes"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transacoe": {
+			          "Target": {
+			            "Entity": "transacoe"
+			          }
+			        },
+			        "transacoe.ID": {
+			          "Target": {
+			            "Entity": "transacoe.ID"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transacoe"
+			            },
+			            "Object": {
+			              "Role": "transacoe.ID"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transacoes_have_ID"
+			        }
+			      ]
+			    },
+			    "transacoe_has_data": {
+			      "Binding": {
+			        "ConceptualEntity": "transacoes"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transacoe": {
+			          "Target": {
+			            "Entity": "transacoe"
+			          }
+			        },
+			        "transacoe.data": {
+			          "Target": {
+			            "Entity": "transacoe.data"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transacoe"
+			            },
+			            "Object": {
+			              "Role": "transacoe.data"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transacoes_have_data"
+			        }
+			      ]
+			    },
+			    "transacoe_has_total": {
+			      "Binding": {
+			        "ConceptualEntity": "transacoes"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transacoe": {
+			          "Target": {
+			            "Entity": "transacoe"
+			          }
+			        },
+			        "transacoe.total": {
+			          "Target": {
+			            "Entity": "transacoe.total"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transacoe"
+			            },
+			            "Object": {
+			              "Role": "transacoe.total"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transacoes_have_totals"
+			        }
+			      ]
+			    },
+			    "transacoe_has_acumulado": {
+			      "Binding": {
+			        "ConceptualEntity": "transacoes"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transacoe": {
+			          "Target": {
+			            "Entity": "transacoe"
+			          }
+			        },
+			        "transacoe.acumulado": {
+			          "Target": {
+			            "Entity": "transacoe.acumulado"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transacoe"
+			            },
+			            "Object": {
+			              "Role": "transacoe.acumulado"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transacoes_have_acumulado"
+			        }
+			      ]
+			    },
+			    "transacoe_has_AVG_total_USD": {
+			      "Binding": {
+			        "ConceptualEntity": "transacoes"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transacoe": {
+			          "Target": {
+			            "Entity": "transacoe"
+			          }
+			        },
+			        "transacoe.AVG_total_USD": {
+			          "Target": {
+			            "Entity": "transacoe.AVG_total_USD"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transacoe"
+			            },
+			            "Object": {
+			              "Role": "transacoe.AVG_total_USD"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transacoes_have_AVG_total_USD"
+			        }
+			      ]
+			    },
+			    "cotacoe_has_data_hora": {
+			      "Binding": {
+			        "ConceptualEntity": "Cotacoes"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "cotacoe": {
+			          "Target": {
+			            "Entity": "cotacoe"
+			          }
+			        },
+			        "cotacoe.data_hora": {
+			          "Target": {
+			            "Entity": "cotacoe.data_hora"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "cotacoe"
+			            },
+			            "Object": {
+			              "Role": "cotacoe.data_hora"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "cotacoes_have_data_horas"
+			        }
+			      ]
+			    },
+			    "cotacoe_has_cotacao": {
+			      "Binding": {
+			        "ConceptualEntity": "Cotacoes"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "cotacoe": {
+			          "Target": {
+			            "Entity": "cotacoe"
+			          }
+			        },
+			        "cotacoe.cotacao": {
+			          "Target": {
+			            "Entity": "cotacoe.cotacao"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "cotacoe"
+			            },
+			            "Object": {
+			              "Role": "cotacoe.cotacao"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "cotacoes_have_cotacaos"
+			        }
+			      ]
+			    },
+			    "cotacoe_has_tipo_boletim": {
+			      "Binding": {
+			        "ConceptualEntity": "Cotacoes"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "cotacoe": {
+			          "Target": {
+			            "Entity": "cotacoe"
+			          }
+			        },
+			        "cotacoe.tipo_boletim": {
+			          "Target": {
+			            "Entity": "cotacoe.tipo_boletim"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "cotacoe"
+			            },
+			            "Object": {
+			              "Role": "cotacoe.tipo_boletim"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "cotacoes_have_tipo_boletims"
+			        }
+			      ]
+			    },
+			    "cotacoe_has_data": {
+			      "Binding": {
+			        "ConceptualEntity": "Cotacoes"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "cotacoe": {
+			          "Target": {
+			            "Entity": "cotacoe"
+			          }
+			        },
+			        "cotacoe.data": {
+			          "Target": {
+			            "Entity": "cotacoe.data"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "cotacoe"
+			            },
+			            "Object": {
+			              "Role": "cotacoe.data"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "cotacoes_have_data"
+			        }
+			      ]
+			    },
+			    "transacoe_has_moeda": {
+			      "Binding": {
+			        "ConceptualEntity": "transacoes"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transacoe": {
+			          "Target": {
+			            "Entity": "transacoe"
+			          }
+			        },
+			        "moeda": {
+			          "Target": {
+			            "Entity": "moeda"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transacoe"
+			            },
+			            "Object": {
+			              "Role": "moeda"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transacoes_have_moedas"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "moeda"
+			            },
+			            "Object": {
+			              "Role": "transacoe"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "moedas_have_transacoes"
+			        }
+			      ]
+			    },
+			    "transacoe_has_calendario": {
+			      "Binding": {
+			        "ConceptualEntity": "transacoes"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "transacoe": {
+			          "Target": {
+			            "Entity": "transacoe"
+			          }
+			        },
+			        "calendario": {
+			          "Target": {
+			            "Entity": "calendario"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "transacoe"
+			            },
+			            "Object": {
+			              "Role": "calendario"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "transacoes_have_calendarios"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendario"
+			            },
+			            "Object": {
+			              "Role": "transacoe"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "calendarios_have_transacoes"
+			        }
+			      ]
+			    },
+			    "cotacoe_has_moeda": {
+			      "Binding": {
+			        "ConceptualEntity": "Cotacoes"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "cotacoe": {
+			          "Target": {
+			            "Entity": "cotacoe"
+			          }
+			        },
+			        "moeda": {
+			          "Target": {
+			            "Entity": "moeda"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "cotacoe"
+			            },
+			            "Object": {
+			              "Role": "moeda"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "cotacoes_have_moedas"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "moeda"
+			            },
+			            "Object": {
+			              "Role": "cotacoe"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "moedas_have_cotacoes"
+			        }
+			      ]
+			    },
+			    "cotacoe_has_calendario": {
+			      "Binding": {
+			        "ConceptualEntity": "Cotacoes"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "cotacoe": {
+			          "Target": {
+			            "Entity": "cotacoe"
+			          }
+			        },
+			        "calendario": {
+			          "Target": {
+			            "Entity": "calendario"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "cotacoe"
+			            },
+			            "Object": {
+			              "Role": "calendario"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "cotacoes_have_calendarios"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "calendario"
+			            },
+			            "Object": {
+			              "Role": "cotacoe"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "calendarios_have_cotacoes"
+			        }
+			      ]
+			    }
+			  },
+			  "Agents": {
+			    "Internal": {
+			      "Version": "1.0.0"
+			    }
+			  }
+			}
+		contentType: json
+

@@ -1,0 +1,34 @@
+{
+  "name": "Custom",
+  "textClasses": {
+    "label": {
+      "fontSize": 8
+    },
+    "callout": {
+      "fontSize": 20
+    },
+    "title": {
+      "fontSize": 11
+    },
+    "header": {
+      "fontFace": "'Segoe UI', wf_segoe-ui_normal, helvetica, arial, sans-serif",
+      "fontSize": 11
+    }
+  },
+  "dataColors": [
+    "#003A69",
+    "#4C7596",
+    "#DE7256",
+    "#FCC86B",
+    "#99B0C3",
+    "#6E8582",
+    "#84738C",
+    "#CABB9F"
+  ],
+  "bad": "#DE7256",
+  "neutral": "#000000",
+  "good": "#4C7596",
+  "minimum": "#DE7256",
+  "center": "#FAEF82",
+  "maximum": "#003A69"
+}

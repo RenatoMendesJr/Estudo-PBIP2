@@ -1,0 +1,129 @@
+table pSegmentos
+	isHidden
+	lineageTag: 9b4e9671-8f06-46ff-afbd-046e6f5cf19b
+
+	column pSegmentos
+		lineageTag: c9f718f7-1570-4161-979d-fbb9854f820f
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'pSegmentos Pedido'
+
+		relatedColumnDetails
+			groupByColumn: 'pSegmentos Campos'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'pSegmentos Campos'
+		isHidden
+		lineageTag: 30c19cbd-e9df-4340-968b-46f4f931f951
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'pSegmentos Pedido'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'pSegmentos Pedido'
+		isHidden
+		formatString: 0
+		lineageTag: 3d14648e-8a31-4752-80bc-fc385c089bf4
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column pIdioma =
+			
+			VAR _selecao = [pSegmentos Pedido]
+			RETURN
+			SWITCH(
+			    _selecao,
+			        0,1,
+			        1,1,
+			        2,1,
+			        3,1,
+			        4,1,
+			        5,1,
+			        6,1,
+			        7,1,
+			        8,2,
+			        9,2,
+			        10,2,
+			        11,2,
+			        12,2,
+			        13,2,
+			        14,2,
+			        15,2,
+			        16,3,
+			        17,3,
+			        18,3,
+			        19,3,
+			        20,3,
+			        21,3,
+			        22,3,
+			        23,3,
+			        24,1,
+			        25,1,
+			        26,2,
+			        27,2,
+			        28,3,
+			        29,3
+			    )
+		formatString: 0
+		lineageTag: ebde1611-b9ae-41d2-91fb-b7dcb08f83ac
+		summarizeBy: sum
+		sortByColumn: 'pSegmentos Pedido'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pSegmentos = calculated
+		mode: import
+		source =
+				{
+				    ("Mercado", NAMEOF('dClientes'[mercado]), 0),
+				    ("Gerente", NAMEOF('dGerencia'[gerente]), 1),
+				    ("Segmento", NAMEOF('dArtigo'[segmento]), 2),
+				    ("Aplicação", NAMEOF('dArtigo'[aplicacao]), 3),
+				    ("Família", NAMEOF('dArtigo'[familia_indg]), 4),
+				    ("Qualidade BW", NAMEOF('dArtigo'[qualidade_bw]), 5),
+				    ("Cliente", NAMEOF('dClientes'[nome_abreviado]), 6),
+				    ("Artigo", NAMEOF('dArtigo'[id_artigo_original]), 7),
+				    ("Market",NAMEOF('dClientes'[mercado]), 8),
+				    ("Manager", NAMEOF('dGerencia'[gerente]), 9),
+				    ("Segment", NAMEOF('dArtigo'[segmento]), 10),
+				    ("Application",NAMEOF('dArtigo'[aplicacao]),11),
+				    ("Family",NAMEOF('dArtigo'[familia_indg]), 12),
+				    ("BW Quality",NAMEOF('dArtigo'[qualidade_bw]), 13),
+				    ("Customer", NAMEOF('dClientes'[nome_abreviado]), 14),
+				    ("Article" , NAMEOF('dArtigo'[id_artigo_original]), 15),
+				    ("Markt",NAMEOF('dClientes'[mercado]), 16),
+				    ("Manager", NAMEOF('dGerencia'[gerente]), 17),
+				    ("Segment", NAMEOF('dArtigo'[segmento]), 18),
+				    ("Anwendung",NAMEOF('dArtigo'[aplicacao]), 19),
+				    ("Familie",NAMEOF('dArtigo'[familia_indg]), 20),
+				    ("Verkstoffen",NAMEOF('dArtigo'[qualidade_bw]), 21),
+				    ("Kunde", NAMEOF('dClientes'[nome_abreviado]), 22),
+				    ("Artikel" , NAMEOF('dArtigo'[id_artigo_original]), 23),
+				    ("Artigo Detalhado",NAMEOF(dArtigo[Concatenado]),24),
+				    --("Especificação",NAMEOF(dArtigo[especificacao]),25),
+				    ("Detailed Article",NAMEOF(dArtigo[Concatenado]),26),
+				   -- ("Specification",NAMEOF(dArtigo[especificacao]),27),
+				    ("Detaillierter Artikel",NAMEOF(dArtigo[Concatenado]),28)--,
+				   -- ("Spezifikation",NAMEOF(dArtigo[especificacao]),29)
+				}
+
+	annotation PBI_Id = 7472db7eac9e4e97a3d1895c0a138144
+
+	annotation PBI_NavigationStepName = Navegation
+

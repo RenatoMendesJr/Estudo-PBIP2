@@ -1,0 +1,74 @@
+table fIQF
+	lineageTag: 32bb6dfe-01ea-470d-81d2-152062e8e763
+
+	column data
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 568591de-d2fe-4dee-b7fc-857dbbd93f9d
+		summarizeBy: none
+		sourceColumn: data
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column id_cliente
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 005960fd-787d-4130-9397-185f375c099a
+		summarizeBy: none
+		sourceColumn: id_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column criterio
+		dataType: string
+		lineageTag: ab35f8bf-253b-4c59-b650-64e29c3c1329
+		summarizeBy: none
+		sourceColumn: criterio
+
+		annotation SummarizationSetBy = Automatic
+
+	column nota
+		dataType: int64
+		formatString: 0
+		lineageTag: de556468-70d9-4aa9-9316-ba6d57ff4b35
+		summarizeBy: sum
+		sourceColumn: nota
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_gerencia
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 85098620-ee19-471f-bebd-d684cfad921b
+		summarizeBy: none
+		sourceColumn: id_gerencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column grupo
+		dataType: int64
+		formatString: 0
+		lineageTag: 174c9ad2-b26c-4f71-9559-f0fd86d55572
+		summarizeBy: sum
+		sourceColumn: grupo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fIQF = m
+		mode: import
+		queryGroup: Fato
+		source =
+				let
+				    Fonte = Sql.Database(server, Banco, [CreateNavigationProperties=false, Query="Select * from vw_fIQF"]),
+				    Tipagem = Table.TransformColumnTypes(Fonte,{{"data", type date}})
+				in
+				    Tipagem
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

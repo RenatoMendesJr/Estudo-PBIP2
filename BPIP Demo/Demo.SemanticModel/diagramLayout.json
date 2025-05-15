@@ -5,74 +5,601 @@
       "ordinal": 0,
       "scrollPosition": {
         "x": 0,
-        "y": 0
+        "y": 4220
       },
       "nodes": [
         {
           "location": {
-            "x": 414.38305001469359,
-            "y": 300
+            "x": 462.31103471351173,
+            "y": 10673.600285470518
           },
-          "nodeIndex": "calendario",
-          "nodeLineageTag": "602c10b1-0eb9-4b08-b2d9-131e80609c58",
+          "nodeIndex": "dCalendario",
+          "nodeLineageTag": "d3dd3020-1676-459c-81af-4ea56120554b",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 37,
+          "expandedHeight": 300
+        },
+        {
+          "location": {
+            "x": 1992.3841445610119,
+            "y": 11579.784218206056
+          },
+          "nodeIndex": "ult_atualizacao",
+          "nodeLineageTag": "079bee06-f070-4bdc-9b18-faebfea32cf1",
+          "size": {
+            "height": 72,
+            "width": 234
+          },
+          "zIndex": 23,
+          "expandedHeight": 104
+        },
+        {
+          "location": {
+            "x": 1992.3178896385284,
+            "y": 11500.251100640107
+          },
+          "nodeIndex": "_Medidas",
+          "nodeLineageTag": "0e83e21d-5d18-4dbe-a026-1692a30648a5",
+          "size": {
+            "height": 72,
+            "width": 234
+          },
+          "zIndex": 24,
+          "expandedHeight": 104
+        },
+        {
+          "location": {
+            "x": 89.983353100320642,
+            "y": 10660.054535847215
+          },
+          "nodeIndex": "d_calendario_filtros",
+          "nodeLineageTag": "5ad9c14f-b89f-4b26-a25b-da43cb05ad03",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 25,
+          "expandedHeight": 300
+        },
+        {
+          "location": {
+            "x": 1990.9123765506315,
+            "y": 11418.323110778427
+          },
+          "nodeIndex": "c_filtros_temporias",
+          "nodeLineageTag": "df77da13-9c84-403d-8094-5c496dae29c1",
+          "size": {
+            "height": 72,
+            "width": 234
+          },
+          "zIndex": 33,
+          "expandedHeight": 128
+        },
+        {
+          "location": {
+            "x": 430.78374241832245,
+            "y": 11839.937150335143
+          },
+          "nodeIndex": "dArtigo",
+          "nodeLineageTag": "986a2736-9a50-44e7-83c2-f53fd958b8c1",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 18,
+          "expandedHeight": 315.80101148552114
+        },
+        {
+          "location": {
+            "x": 445.6026607683599,
+            "y": 10833.367959883049
+          },
+          "nodeIndex": "dClientes",
+          "nodeLineageTag": "8c7bb759-8d02-4330-9511-5c7318fe831e",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 28,
+          "expandedHeight": 248
+        },
+        {
+          "location": {
+            "x": 440.59404790329705,
+            "y": 11397.994339696048
+          },
+          "nodeIndex": "dDecisao_reclamacao",
+          "nodeLineageTag": "c3cef55b-17d1-4233-b271-16cdf8147a09",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 19,
+          "expandedHeight": 152
+        },
+        {
+          "location": {
+            "x": 433.19425086220815,
+            "y": 11698.454132089486
+          },
+          "nodeIndex": "dGerencia",
+          "nodeLineageTag": "a93bc0a4-670c-4ed3-9087-57c43bcc7af9",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 27,
+          "expandedHeight": 221.77311107535525
+        },
+        {
+          "location": {
+            "x": 444.17614940123968,
+            "y": 11011.005167720519
+          },
+          "nodeIndex": "dNotaFiscal",
+          "nodeLineageTag": "eaa6a31d-1032-406d-8fca-043192684b7d",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 20,
+          "expandedHeight": 104
+        },
+        {
+          "location": {
+            "x": 442.18821567599821,
+            "y": 11203.772321153301
+          },
+          "nodeIndex": "dPedidos",
+          "nodeLineageTag": "eae855cb-6030-46f1-b238-02476714e6cf",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 29,
+          "expandedHeight": 104
+        },
+        {
+          "location": {
+            "x": 1124.1146642224726,
+            "y": 11952.897350370593
+          },
+          "nodeIndex": "fReclamacao",
+          "nodeLineageTag": "ed0a9137-50af-4b28-9c3c-ed3aa8c88cfd",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 38,
+          "expandedHeight": 248
+        },
+        {
+          "location": {
+            "x": 2237.5553748303369,
+            "y": 11500.435846555723
+          },
+          "nodeIndex": "pSegmentos",
+          "nodeLineageTag": "9b4e9671-8f06-46ff-afbd-046e6f5cf19b",
+          "size": {
+            "height": 72,
+            "width": 234
+          },
+          "zIndex": 21,
+          "expandedHeight": 152
+        },
+        {
+          "location": {
+            "x": 2235.048832590332,
+            "y": 11421.4954230837
+          },
+          "nodeIndex": "pVisao",
+          "nodeLineageTag": "a577d30f-a6f2-483f-add4-baf602cbfee2",
+          "size": {
+            "height": 72,
+            "width": 234
+          },
+          "zIndex": 26,
+          "expandedHeight": 152
+        },
+        {
+          "location": {
+            "x": 2239.3104595837863,
+            "y": 11579.993651244422
+          },
+          "nodeIndex": "pMetricas",
+          "nodeLineageTag": "7a817098-6f30-4b73-b96b-ed9225847d35",
+          "size": {
+            "height": 72,
+            "width": 234
+          },
+          "zIndex": 22,
+          "expandedHeight": 152
+        },
+        {
+          "location": {
+            "x": 1142.7860705593232,
+            "y": 10634.953127883051
+          },
+          "nodeIndex": "fMetas_artigo",
+          "nodeLineageTag": "f5ba06ec-cc4b-4c1d-9970-12cdf6de76da",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 30,
+          "expandedHeight": 296
+        },
+        {
+          "location": {
+            "x": 1133.3967465178027,
+            "y": 10842.952691415558
+          },
+          "nodeIndex": "febtida_artigo_coml",
+          "nodeLineageTag": "c474156b-bbeb-4743-9552-5f750e84b0e3",
+          "size": {
+            "height": 176,
+            "width": 234
+          },
+          "zIndex": 39,
+          "expandedHeight": 300
+        },
+        {
+          "location": {
+            "x": 1991.5527011157951,
+            "y": 11661.572144281075
+          },
+          "nodeIndex": "Helper_EBITDA",
+          "nodeLineageTag": "59410fb2-d72e-48c8-8316-34459288c2bf",
+          "size": {
+            "height": 72,
+            "width": 234
+          },
+          "zIndex": 17,
+          "expandedHeight": 176
+        },
+        {
+          "location": {
+            "x": 2494.1430085916518,
+            "y": 11843.285042442334
+          },
+          "nodeIndex": "pVisaoEBITDA",
+          "nodeLineageTag": "10bb6d8f-85ac-4e39-b2db-7d4bed45e09c",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 15,
+          "expandedHeight": 152
+        },
+        {
+          "location": {
+            "x": 1989.3723938625096,
+            "y": 11338.412071432984
+          },
+          "nodeIndex": "c_insatisfacao",
+          "nodeLineageTag": "5a396be6-a648-4026-90ca-031b90194b4a",
+          "size": {
+            "height": 72,
+            "width": 234
+          },
+          "zIndex": 16,
+          "expandedHeight": 128
+        },
+        {
+          "location": {
+            "x": 2478.4150102252934,
+            "y": 11419.469862603259
+          },
+          "nodeIndex": "pFaturamento",
+          "nodeLineageTag": "246f83cd-5905-4d3a-9d52-e95a87759690",
+          "size": {
+            "height": 72,
+            "width": 234
+          },
+          "zIndex": 7,
+          "expandedHeight": 152
+        },
+        {
+          "location": {
+            "x": 2479.2958740694512,
+            "y": 11501.212999139054
+          },
+          "nodeIndex": "pFormato",
+          "nodeLineageTag": "2aaa53fc-4c55-4806-878c-71c5da50d594",
+          "size": {
+            "height": 72,
+            "width": 234
+          },
+          "zIndex": 8,
+          "expandedHeight": 152
+        },
+        {
+          "location": {
+            "x": 2236.9258888498221,
+            "y": 11736.32775377401
+          },
+          "nodeIndex": "pMelhorPior",
+          "nodeLineageTag": "364fc2e7-a904-42e0-95f4-fbf0a4893737",
+          "size": {
+            "height": 72,
+            "width": 234
+          },
+          "zIndex": 31,
+          "expandedHeight": 152
+        },
+        {
+          "location": {
+            "x": 2239.2567101239756,
+            "y": 11657.950982862112
+          },
+          "nodeIndex": "pMeta",
+          "nodeLineageTag": "0b35ed60-3e23-4d0c-ade6-77ad18ffb501",
+          "size": {
+            "height": 72,
+            "width": 234
+          },
+          "zIndex": 32,
+          "expandedHeight": 152
+        },
+        {
+          "location": {
+            "x": 2481.11605452531,
+            "y": 11665.998484256663
+          },
+          "nodeIndex": "ptiposegmentacao",
+          "nodeLineageTag": "fe0046c2-c306-42de-a77b-052c794df894",
+          "size": {
+            "height": 72,
+            "width": 234
+          },
+          "zIndex": 10,
+          "expandedHeight": 152
+        },
+        {
+          "location": {
+            "x": 2238.8347780642293,
+            "y": 11812.121737161116
+          },
+          "nodeIndex": "pTop",
+          "nodeLineageTag": "4f5829f1-ffc5-4bb2-964e-b2a03a1f273f",
+          "size": {
+            "height": 72,
+            "width": 234
+          },
+          "zIndex": 11,
+          "expandedHeight": 224
+        },
+        {
+          "location": {
+            "x": 2484.6733523173166,
+            "y": 11327.292550408321
+          },
+          "nodeIndex": "pVisaoTargetEbtida",
+          "nodeLineageTag": "7e396a7b-cbe0-433d-bc66-c9efda5a660d",
+          "size": {
+            "height": 72,
+            "width": 234
+          },
+          "zIndex": 12,
+          "expandedHeight": 200
+        },
+        {
+          "location": {
+            "x": 2234.0282422807468,
+            "y": 11329.507001658319
+          },
+          "nodeIndex": "pBaseCorteTargetEbtida",
+          "nodeLineageTag": "4492aaa7-170a-49e5-bf01-5821226d0b44",
+          "size": {
+            "height": 72,
+            "width": 234
+          },
+          "zIndex": 13,
+          "expandedHeight": 200
+        },
+        {
+          "location": {
+            "x": 1992.37578986731,
+            "y": 11812.408512950871
+          },
+          "nodeIndex": "Helper_Scorecard",
+          "nodeLineageTag": "7c7daf76-83ca-4f60-b2cb-460f209f3d2e",
+          "size": {
+            "height": 72,
+            "width": 234
+          },
+          "zIndex": 34,
+          "expandedHeight": 200
+        },
+        {
+          "location": {
+            "x": 1993.03297048587,
+            "y": 11736.882643955429
+          },
+          "nodeIndex": "Helper_referencia",
+          "nodeLineageTag": "684f6e20-f438-4f2d-8184-9264f03a1f85",
+          "size": {
+            "height": 72,
+            "width": 234
+          },
+          "zIndex": 14,
+          "expandedHeight": 200
+        },
+        {
+          "location": {
+            "x": 2796.7560405361992,
+            "y": 11966.186595067131
+          },
+          "nodeIndex": "pValorVisaoEBITDA",
+          "nodeLineageTag": "f3547472-b3ec-4b31-8d91-4809f8746d73",
           "size": {
             "height": 104,
             "width": 234
           },
           "zIndex": 4,
-          "expandedHeight": 176
+          "expandedHeight": 152
         },
         {
           "location": {
-            "x": 718.38305001469348,
-            "y": 113
+            "x": 1136.6854486184316,
+            "y": 11638.350486413663
           },
-          "nodeIndex": "Cotacoes",
-          "nodeLineageTag": "e64d34fb-c053-4d31-bfc8-3085ee9323c7",
+          "nodeIndex": "fDevolucao",
+          "nodeLineageTag": "c2b63e1e-eb2b-4c5f-914a-3870099af427",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 5,
+          "expandedHeight": 300
+        },
+        {
+          "location": {
+            "x": 1142.2102999700785,
+            "y": 11114.540137483142
+          },
+          "nodeIndex": "fFaturamento",
+          "nodeLineageTag": "015081a0-1640-4452-aea1-c395c117a7d9",
+          "size": {
+            "height": 224,
+            "width": 234
+          },
+          "zIndex": 35,
+          "expandedHeight": 300
+        },
+        {
+          "location": {
+            "x": 1130.49015026649,
+            "y": 10477.84914496218
+          },
+          "nodeIndex": "fMetas_Reclamacao",
+          "nodeLineageTag": "8254f487-e92f-4d85-88cd-50b530d41854",
           "size": {
             "height": 128,
             "width": 234
           },
-          "zIndex": 1,
+          "zIndex": 6
+        },
+        {
+          "location": {
+            "x": 1151.2975668911092,
+            "y": 11385.059123001032
+          },
+          "nodeIndex": "fIQF",
+          "nodeLineageTag": "32bb6dfe-01ea-470d-81d2-152062e8e763",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 36,
           "expandedHeight": 200
         },
         {
           "location": {
-            "x": 431.20156119318506,
-            "y": 0
+            "x": 1994.7035818143709,
+            "y": 11939.277302460967
           },
-          "nodeIndex": "moedas",
-          "nodeLineageTag": "a92b963b-f72f-4fe4-83f4-a1ea2df69272",
+          "nodeIndex": "pIdioma",
+          "nodeLineageTag": "fc4aaff2-70b2-4249-8d6c-5c0a159a7d27",
           "size": {
             "height": 104,
             "width": 234
+          },
+          "zIndex": 40,
+          "expandedHeight": 200
+        },
+        {
+          "location": {
+            "x": 2804.4909694136168,
+            "y": 11716.67268259597
+          },
+          "nodeIndex": "pVisaoEBITDA_budget",
+          "nodeLineageTag": "2a0b3c1f-04c3-4ff9-a869-ac72a81f4a09",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 1,
+          "expandedHeight": 152
+        },
+        {
+          "location": {
+            "x": 2797.94234776044,
+            "y": 11844.006830527986
+          },
+          "nodeIndex": "pVisaoEBITDA_forecast",
+          "nodeLineageTag": "9e2c1b05-cab2-4112-9a90-a09b057acf41",
+          "size": {
+            "height": 104,
+            "width": 245.59503676767417
           },
           "zIndex": 2,
           "expandedHeight": 152
         },
         {
           "location": {
-            "x": 134,
-            "y": 133
+            "x": 1500.4929942402894,
+            "y": 11951.991778570813
           },
-          "nodeIndex": "transacoes",
-          "nodeLineageTag": "a2ea0539-01d0-4db8-80c6-e636bd9e661b",
+          "nodeIndex": "fhelp",
+          "nodeLineageTag": "c4619113-3524-41d5-932d-54aef41b6c18",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 3,
+          "expandedHeight": 200
+        },
+        {
+          "location": {
+            "x": 1507.0746630140422,
+            "y": 11570.253338860821
+          },
+          "nodeIndex": "dMotivoDevolucao",
+          "nodeLineageTag": "941be78d-d3f4-41fc-bd00-1e1ac3a9a7df",
           "size": {
             "height": 128,
             "width": 234
           },
-          "zIndex": 3,
-          "expandedHeight": 176
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3003.5540314277937,
+            "y": 5485.0377656034852
+          },
+          "nodeIndex": "pRealTon",
+          "nodeLineageTag": "84980bb5-89bc-4861-9703-1bc5ea79d334",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 0
+        },
+        {
+          "location": {
+            "x": 3197.5706783274732,
+            "y": 5074.2757142513819
+          },
+          "nodeIndex": "pReclamacao",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
-      "name": "All tables",
-      "zoomValue": 100,
+      "name": "Todas as tabelas",
+      "zoomValue": 10,
       "pinKeyFieldsToTop": false,
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,
       "tablesLocked": false
     }
   ],
-  "selectedDiagram": "All tables",
-  "defaultDiagram": "All tables"
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
 }

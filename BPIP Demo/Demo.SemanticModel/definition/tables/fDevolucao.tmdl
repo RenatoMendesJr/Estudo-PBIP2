@@ -1,0 +1,108 @@
+table fDevolucao
+	lineageTag: c2b63e1e-eb2b-4c5f-914a-3870099af427
+
+	column id_pedido
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 63817203-3f71-4be1-899a-03bcbfd6d342
+		summarizeBy: none
+		sourceColumn: id_pedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_devolucao
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 4844a102-f4a7-4d98-8c22-e53ff672a9ac
+		summarizeBy: none
+		sourceColumn: data_devolucao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column id_artigo
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2e11c340-3338-472e-af97-98560d0b097b
+		summarizeBy: none
+		sourceColumn: id_artigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_cliente
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 98576097-4a62-4845-8c73-a6f6838164fa
+		summarizeBy: none
+		sourceColumn: id_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_gerencia
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 2211f780-c54d-411d-90a1-69453e8f38b5
+		summarizeBy: none
+		sourceColumn: id_gerencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_nr_nota_fis
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a970ef40-01db-47e4-81eb-16555767964d
+		summarizeBy: none
+		sourceColumn: id_nr_nota_fis
+
+		annotation SummarizationSetBy = Automatic
+
+	column peso_liq_kg
+		dataType: double
+		lineageTag: 1a724df6-b9b5-43b7-9f5d-c0014c837ee4
+		summarizeBy: sum
+		sourceColumn: peso_liq_kg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_total_item
+		dataType: double
+		lineageTag: 6b1725ed-7792-415b-9de0-6aed0b766bfc
+		summarizeBy: sum
+		sourceColumn: vl_total_item
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column id_motivodev
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f2deea74-6ce7-4035-9954-51ac823ac894
+		summarizeBy: none
+		sourceColumn: id_motivodev
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fDevolucao = m
+		mode: import
+		queryGroup: Fato
+		source =
+				let
+				    Fonte = Sql.Database(server, Banco, [CreateNavigationProperties=false, Query="Select * from vw_fDevolucao#(lf)"]),
+				    Tipagem = Table.TransformColumnTypes(Fonte,{{"data_devolucao", type date}})
+				in
+				    Tipagem
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

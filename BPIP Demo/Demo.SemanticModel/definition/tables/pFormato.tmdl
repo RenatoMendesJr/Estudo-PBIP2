@@ -1,0 +1,52 @@
+table pFormato
+	isHidden
+	lineageTag: 2aaa53fc-4c55-4806-878c-71c5da50d594
+
+	column sFormato
+		lineageTag: 5173e347-704b-4766-9c9e-6817a3576fc6
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'sFormato Pedido'
+
+		relatedColumnDetails
+			groupByColumn: 'sFormato Campos'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'sFormato Campos'
+		isHidden
+		lineageTag: 53e5e6bb-6055-46f6-9b8f-475dcc4fb39a
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'sFormato Pedido'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'sFormato Pedido'
+		isHidden
+		formatString: 0
+		lineageTag: 0e87d17c-fcf6-4349-93b5-20a59f123fa8
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pSegmentos = calculated
+		mode: import
+		source =
+				{
+				    ("Sem Formatação","sf", 0),
+				    ("Dinâmica","dn", 1),
+				    ("Milhar", "k", 2),
+				    ("Milhão", "m", 3),
+				    ("Bilhão", "b", 4)
+				}
+
+	annotation PBI_Id = 7472db7eac9e4e97a3d1895c0a138144
+

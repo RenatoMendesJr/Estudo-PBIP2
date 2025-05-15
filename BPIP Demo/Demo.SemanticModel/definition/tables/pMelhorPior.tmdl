@@ -1,0 +1,50 @@
+table pMelhorPior
+	lineageTag: 364fc2e7-a904-42e0-95f4-fbf0a4893737
+
+	column MelhorPior
+		lineageTag: a42d159a-6451-4696-a40c-4db1b792e20f
+		summarizeBy: none
+		sourceColumn: [Value1]
+
+		relatedColumnDetails
+			groupByColumn: ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ID
+		isHidden
+		formatString: 0
+		lineageTag: 13253ba6-132d-4ef6-ad33-f0c0190cca41
+		summarizeBy: sum
+		sourceColumn: [Value2]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'top EN' = IF( [ID] = 0, "Best", "Worst")
+		lineageTag: ab5c6015-ab47-428e-8f3a-a345b8298b1c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'top DE' = IF( [ID] = 0, "Besser", "Schlechter")
+		lineageTag: 6912defd-83db-4d6f-9c2e-06061ff416a0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pMelhorPior = calculated
+		mode: import
+		source =
+				{
+				    ("Melhor", 0),
+				    ("Pior", 1)
+				}
+
+	annotation PBI_Id = 60f234b617774a15bc3cb8d35f6af960
+

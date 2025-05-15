@@ -1,0 +1,84 @@
+table pVisao
+	isHidden
+	lineageTag: a577d30f-a6f2-483f-add4-baf602cbfee2
+
+	column pVisao
+		lineageTag: 8d93dbdc-4c53-4b3f-b1e7-72b0af010dd0
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'pVisao Pedido'
+
+		relatedColumnDetails
+			groupByColumn: 'pVisao Campos'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'pVisao Campos'
+		isHidden
+		lineageTag: 76531697-3448-44b3-b876-bf48ffa12970
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'pVisao Pedido'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'pVisao Pedido'
+		isHidden
+		formatString: 0
+		lineageTag: 2b787472-5a97-4542-87f3-84618f5447f7
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'pVisao En' =
+			
+			SWITCH(
+			    [pVisao Pedido],
+			    0,"Volume",
+			    1,"Revenue",
+			    2,"Avarage Price",
+			    3,"Gross Profit (R$/t)",
+			    4,"Gross Profit (%)"
+			)
+		lineageTag: 0a8a0981-4fc8-4343-8942-ad28a92ac0cd
+		summarizeBy: none
+		sortByColumn: 'pVisao Pedido'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'pVisao DE' =
+			
+			SWITCH(
+			    [pVisao Pedido],
+			    0,"Volumem",
+			    1,"Umsatz",
+			    2,"Durchschnittspreis",
+			    3,"Bruttogewinn(R$/t)",
+			    4,"Bruttogewinn(%)"
+			)
+		lineageTag: e8be88b0-9816-4038-beb4-608d8514484f
+		summarizeBy: none
+		sortByColumn: 'pVisao Pedido'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pVisao = calculated
+		mode: import
+		source =
+				{
+				    ("Volume", NAMEOF('_Medidas'[PesoFaturado]), 0),
+				    ("Faturamento", NAMEOF('_Medidas'[Faturamento]), 1),
+				    ("Preço Médio", NAMEOF('_Medidas'[Preco Medio]), 2),
+				    ("Lucro Bruto (R$/t)", NAMEOF('_Medidas'[Gross Profit Total (R$/t)]), 3),
+				    ("Lucro Bruto (%)", NAMEOF('_Medidas'[Gross Profit (%)]), 4)
+				}
+
+	annotation PBI_Id = 765cb0d0be7742d0a4974c099523c6e7
+

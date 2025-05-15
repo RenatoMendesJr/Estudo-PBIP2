@@ -1,0 +1,46 @@
+table pIdioma
+	lineageTag: fc4aaff2-70b2-4249-8d6c-5c0a159a7d27
+
+	column Idioma
+		lineageTag: 7e9e2572-0bb2-4e19-a3e1-391770603dfc
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Idioma]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordem
+		formatString: 0
+		lineageTag: 98e3c999-2fee-4d01-b749-88f824ecba81
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Ordem]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Abr
+		lineageTag: abca24c8-2f82-4725-b30b-14853d02c3af
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Abr]
+		sortByColumn: Ordem
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pIdioma = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Idioma",STRING,
+				    "Ordem",INTEGER,
+				    "Abr", STRING,
+				    {
+				        {"Português",1,"PT"},
+				        {"Alemão",2,"DE"},
+				        {"Inglês",3,"EN"}
+				    }
+				)
+
+	annotation PBI_Id = be0e758ac0c045868985112b7353c4cd
+

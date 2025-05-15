@@ -1,0 +1,44 @@
+table pReclamacao
+	lineageTag: 692e84aa-daf3-44fd-b73e-097d9667f408
+
+	column id
+		isHidden
+		formatString: 0
+		lineageTag: 2611fcc0-d208-4dbe-a630-3f4c25bb5099
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [id]
+
+		annotation SummarizationSetBy = Automatic
+
+	column campo
+		isHidden
+		lineageTag: 6c45c3ad-9a92-45f9-b2fb-bfbdca1d5a7a
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [campo]
+		sortByColumn: id
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pReclamacao = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "id",INTEGER,"campo",STRING,
+				    {
+				        {0,"Geral"},
+				        {1,"Com Tempera"},
+				        {2,"Sem Tempera"},
+				        {3,"All"},
+				        {4,"With Tempering"},
+				        {5,"Without Tempering"},
+				        {6,"Alle"},
+				        {7,"Vergütet"},
+				        {8,"Unvergütet"}
+				    }
+				)
+
+	annotation PBI_Id = 4fcfb4341e224b9d919a866231b14311
+

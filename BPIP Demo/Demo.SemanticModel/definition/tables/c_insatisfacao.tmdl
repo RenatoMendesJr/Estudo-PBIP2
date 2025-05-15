@@ -1,0 +1,96 @@
+table c_insatisfacao
+	lineageTag: 5a396be6-a648-4026-90ca-031b90194b4a
+
+	calculationGroup
+		precedence: 2
+
+		calculationItem 'Apenas Insatisfeitos' = ```
+				
+				VAR _Listaclientes = 
+				CALCULATETABLE(
+				            VALUES(fIQF[id_cliente]),
+				            KEEPFILTERS(fIQF[nota] = 1),
+				            KEEPFILTERS(fIQF[grupo] = 1)
+				        )
+				
+				VAR _clientes = 
+				CALCULATETABLE(
+				    VALUES(dClientes[id_cliente]),
+				    dClientes[id_cliente] in _Listaclientes
+				)
+				
+				RETURN 
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    KEEPFILTERS(_clientes)
+				)
+				```
+
+		calculationItem Todos = SELECTEDMEASURE()
+
+		calculationItem 'Only dissatisfied' = ```
+				
+				VAR _Listaclientes = 
+				CALCULATETABLE(
+				            VALUES(fIQF[id_cliente]),
+				            KEEPFILTERS(fIQF[nota] = 1),
+				            KEEPFILTERS(fIQF[grupo] = 1)
+				        )
+				
+				VAR _clientes = 
+				CALCULATETABLE(
+				    VALUES(dClientes[id_cliente]),
+				    dClientes[id_cliente] in _Listaclientes
+				)
+				
+				RETURN 
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    KEEPFILTERS(_clientes)
+				)
+				```
+
+		calculationItem 'Nur Unzufriedene' = ```
+				
+				VAR _Listaclientes = 
+				CALCULATETABLE(
+				            VALUES(fIQF[id_cliente]),
+				            KEEPFILTERS(fIQF[nota] = 1),
+				            KEEPFILTERS(fIQF[grupo] = 1)
+				        )
+				
+				VAR _clientes = 
+				CALCULATETABLE(
+				    VALUES(dClientes[id_cliente]),
+				    dClientes[id_cliente] in _Listaclientes
+				)
+				
+				RETURN 
+				CALCULATE(
+				    SELECTEDMEASURE(),
+				    KEEPFILTERS(_clientes)
+				)
+				```
+
+		calculationItem All = SELECTEDMEASURE()
+
+		calculationItem Alle = SELECTEDMEASURE()
+
+	column 'Coluna do grupo de cálculo'
+		dataType: string
+		lineageTag: 3449b82b-1654-4703-9899-5f2fe11a71c9
+		summarizeBy: none
+		sourceColumn: Name
+		sortByColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordinal
+		dataType: int64
+		formatString: 0
+		lineageTag: 4a92afcb-a906-4fe2-a6da-0516ada2e465
+		summarizeBy: sum
+		sourceColumn: Ordinal
+
+		annotation SummarizationSetBy = Automatic
+

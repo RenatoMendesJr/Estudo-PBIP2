@@ -1,0 +1,49 @@
+table pFaturamento
+	isHidden
+	lineageTag: 246f83cd-5905-4d3a-9d52-e95a87759690
+
+	column sFaturamento
+		lineageTag: 2dc1bde7-0129-422e-a49e-08eb7aca5016
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'sFaturamento Pedido'
+
+		relatedColumnDetails
+			groupByColumn: 'sFaturamento Campos'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'sFaturamento Campos'
+		isHidden
+		lineageTag: 78e955e9-b4d6-478c-8801-537a23fd624b
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'sFaturamento Pedido'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'sFaturamento Pedido'
+		isHidden
+		formatString: 0
+		lineageTag: 66ce6ccd-7fe5-40a5-9266-6e034e4c358f
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pFaturamento = calculated
+		mode: import
+		source =
+				{
+				    ("Sem taxa", NAMEOF('_Medidas'[Faturamento sem taxa]), 0),
+				    ("Com taxa", NAMEOF('_Medidas'[Faturamento com taxa]), 1)
+				}
+
+	annotation PBI_Id = a5458adcef174e8583b2e5eb6fae6d89
+

@@ -1,0 +1,180 @@
+table dArtigo
+	lineageTag: 986a2736-9a50-44e7-83c2-f53fd958b8c1
+
+	column id_artigo
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 86537af1-dbd5-440e-b7ad-89e550310e1a
+		summarizeBy: none
+		sourceColumn: id_artigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_artigo_original
+		dataType: string
+		lineageTag: 07801b2e-837d-463f-b1d4-e1dcebcf960d
+		summarizeBy: none
+		sourceColumn: id_artigo_original
+
+		annotation SummarizationSetBy = Automatic
+
+	column espessura_mm
+		dataType: double
+		formatString: #,0.00
+		lineageTag: 8206e954-d7b3-48ec-9dd4-1ed81b8cd81b
+		summarizeBy: sum
+		sourceColumn: espessura_mm
+
+		annotation SummarizationSetBy = Automatic
+
+	column largura_mm
+		dataType: double
+		formatString: #,0.00
+		lineageTag: fdf7df58-7cdf-464f-bafa-b217fca1dd4a
+		summarizeBy: sum
+		sourceColumn: largura_mm
+
+		annotation SummarizationSetBy = Automatic
+
+	column comprimento_mm
+		dataType: double
+		formatString: #,0
+		lineageTag: 0a36c479-625b-46dc-94e4-0411d532a06f
+		summarizeBy: sum
+		sourceColumn: comprimento_mm
+
+		annotation SummarizationSetBy = Automatic
+
+	column segmento
+		dataType: string
+		lineageTag: e302ae2c-c9cc-40b9-986b-96fcbb721565
+		summarizeBy: none
+		sourceColumn: segmento
+
+		annotation SummarizationSetBy = Automatic
+
+	column aplicacao
+		dataType: string
+		lineageTag: 32383e69-2a0b-4b76-bb21-c9b9a75c71b4
+		summarizeBy: none
+		sourceColumn: aplicacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column familia_indg
+		dataType: string
+		lineageTag: 52c6b9fe-826b-4153-bbb1-f4741b8b5ccf
+		summarizeBy: none
+		sourceColumn: familia_indg
+
+		annotation SummarizationSetBy = Automatic
+
+	column qualidade_bw
+		dataType: string
+		lineageTag: a3bf8463-7c72-4d7c-8712-93145b9c6e54
+		summarizeBy: none
+		sourceColumn: qualidade_bw
+
+		annotation SummarizationSetBy = Automatic
+
+	column superficie
+		dataType: string
+		lineageTag: 4bbf9f18-7e22-4464-8f35-16207b0bf5e7
+		summarizeBy: none
+		sourceColumn: superficie
+
+		annotation SummarizationSetBy = Automatic
+
+	column temperado
+		dataType: string
+		lineageTag: 49fdefba-383e-4137-a4fe-f2e3909e5ed2
+		summarizeBy: none
+		sourceColumn: temperado
+
+		annotation SummarizationSetBy = Automatic
+
+	column revestimento
+		dataType: string
+		lineageTag: 8f71b608-f2de-4c84-bc18-4ef866eb03f6
+		summarizeBy: none
+		sourceColumn: revestimento
+
+		annotation SummarizationSetBy = Automatic
+
+	column tratamento_cantos
+		dataType: string
+		lineageTag: 4ebd5d85-7b3f-496a-bd21-8f45f4d867c7
+		summarizeBy: none
+		sourceColumn: tratamento_cantos
+
+		annotation SummarizationSetBy = Automatic
+
+	column endireitado
+		dataType: string
+		lineageTag: 1a8cd6b8-8f65-4cf1-8787-0d50c5738a9a
+		summarizeBy: none
+		sourceColumn: endireitado
+
+		annotation SummarizationSetBy = Automatic
+
+	column rota
+		dataType: string
+		lineageTag: c65ce3dd-2721-4aef-8ab4-c6636df746b7
+		summarizeBy: none
+		sourceColumn: rota
+
+		annotation SummarizationSetBy = Automatic
+
+	column identificacao
+		dataType: string
+		lineageTag: e84ea3ad-9636-4650-909e-05ba2fc6ac02
+		summarizeBy: none
+		sourceColumn: identificacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column oscilacao
+		dataType: string
+		lineageTag: 30076d4d-9c5b-47bb-8848-4a7842acd34a
+		summarizeBy: none
+		sourceColumn: oscilacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column especificacao
+		dataType: string
+		lineageTag: 1cdbfb9c-3cac-499d-b82a-d0fc4bde2af7
+		summarizeBy: none
+		sourceColumn: especificacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column Concatenado
+		dataType: string
+		lineageTag: 88dbf743-a144-4ac7-83f3-533c7fd7ddb8
+		summarizeBy: none
+		sourceColumn: Concatenado
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dArtigo = m
+		mode: import
+		queryGroup: Dimensão
+		source = ```
+				let
+				    Fonte = Sql.Database(server, Banco, [CreateNavigationProperties=false, Query="Select * from vw_dArtigo"]),
+				    Tipagem = Table.TransformColumnTypes(Fonte,{{"id_artigo_original", type text}, {"comprimento_mm", type number}}),
+				    AdicionandoDimensao = Table.AddColumn(Tipagem, "Concatenado", each [id_artigo_original]&" - "&[especificacao]&" - ("&
+				"E: " & Number.ToText([espessura_mm], "0.###") & 
+				" |L: " & Number.ToText([largura_mm], "0.###") & 
+				" |C: " & Number.ToText([comprimento_mm], "0.###")
+				&")", type text)
+				in
+				    AdicionandoDimensao
+				```
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,50 @@
+table pMeta
+	isHidden
+	lineageTag: 0b35ed60-3e23-4d0c-ade6-77ad18ffb501
+
+	column sMeta
+		lineageTag: 5e717c93-5a1b-4961-b385-b90a1f107842
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'sMeta Pedido'
+
+		relatedColumnDetails
+			groupByColumn: 'sMeta Campos'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'sMeta Campos'
+		isHidden
+		lineageTag: 6ea00eab-7288-40f0-9b0e-54c672386856
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'sMeta Pedido'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'sMeta Pedido'
+		isHidden
+		formatString: 0
+		lineageTag: 65ee3e33-0e01-4862-8b3f-e06892967528
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pSegmentos = calculated
+		mode: import
+		source =
+				{
+				    ("Target","t", 0),
+				    ("Budget","b", 1),
+				    ("Forecast", "f", 2)
+				}
+
+	annotation PBI_Id = 7472db7eac9e4e97a3d1895c0a138144
+

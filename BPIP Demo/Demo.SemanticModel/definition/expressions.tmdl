@@ -1,117 +1,175 @@
-expression data_inicial = #date(2024, 1, 1) meta [IsParameterQuery=true, Type="Date", IsParameterQueryRequired=true]
-	lineageTag: 4d2bed63-fad4-4c4c-be67-2eb893ed539e
-	queryGroup: Parâmetros
+expression GeradorISO = ```
+		let CreateDateTable = (StartDate as date, EndDate as date, optional Culture as nullable text) as table =>
+		
+		  let
+		
+		    DayCount = Duration.Days(Duration.From(EndDate - StartDate))+1,
+		
+		    Source = List.Dates(StartDate,DayCount,#duration(1,0,0,0)),
+		
+		    TableFromList = Table.FromList(Source, Splitter.SplitByNothing()),   
+		
+		    ChangedType = Table.TransformColumnTypes(TableFromList,{{"Column1", type date}}),
+		
+		    RenamedColumns = Table.RenameColumns(ChangedType,{{"Column1", "Date"}}),
+		
+		    InsertYear = Table.AddColumn(RenamedColumns, "Year", each Date.Year([Date])),
+		
+		    InsertQuarter = Table.AddColumn(InsertYear, "QuarterOfYear", each Date.QuarterOfYear([Date])),
+		
+		    InsertMonth = Table.AddColumn(InsertQuarter, "MonthOfYear", each Date.Month([Date])),
+		
+		    InsertFinYearNumber = Table.AddColumn(InsertMonth, "FinYearNumber",each if [MonthOfYear] >= 7  then [Year] else [Year] -1 ),
+		
+		    InsertFinYearDisplay = Table.AddColumn(InsertFinYearNumber, "FinYear" ,each "FY" & Text.End(Number.ToText([FinYearNumber],"D",""),2) & "/" & Text.End(Number.ToText([FinYearNumber]+1,"D",""),2)),
+		
+		    InsertFinMonth = Table.AddColumn(InsertFinYearDisplay, "FinMonth", each if [MonthOfYear] >= 7  then [MonthOfYear] - 6 else [MonthOfYear] + 6 ),
+		
+		    InsertFinQuarterNumber = Table.AddColumn(InsertFinMonth, "FinQuarterNumber", each if [QuarterOfYear] > 2 then [QuarterOfYear] -2 else [QuarterOfYear] + 2),
+		
+		    InsertFinQuarterDisplay = Table.AddColumn(InsertFinQuarterNumber ,"FinQuarter", each "FQ" & Number.ToText([FinQuarterNumber],"D","") ),
+		
+		    InsertDay = Table.AddColumn(InsertFinQuarterDisplay , "DayOfMonth", each Date.Day([Date])),
+		
+		    InsertDayInt = Table.AddColumn(InsertDay, "DateInt", each [Year] * 10000 + [MonthOfYear] * 100 + [DayOfMonth]),
+		
+		    InsertMonthName = Table.AddColumn(InsertDayInt, "MonthName", each Date.ToText([Date], "MMMM", Culture), type text),
+		
+		    InsertCalendarMonth = Table.AddColumn(InsertMonthName, "MonthInCalendar", each (try(Text.Range([MonthName],0,3)) otherwise [MonthName]) & " " & Number.ToText([Year])),
+		
+		    InsertCalendarQtr = Table.AddColumn(InsertCalendarMonth, "QuarterInCalendar", each "Q" & Number.ToText([QuarterOfYear]) & " " & Number.ToText([Year])),
+		
+		    InsertDayWeek = Table.AddColumn(InsertCalendarQtr, "DayInWeek", each Date.DayOfWeek([Date],1)+1),
+		
+		    InsertDayName = Table.AddColumn(InsertDayWeek, "DayOfWeekName", each Date.ToText([Date], "dddd", Culture), type text),
+		
+		    InsertWeekEnding = Table.AddColumn(InsertDayName, "WeekEndingFriday", each Date.EndOfWeek([Date],6), type date),   
+		
+		    InsertCurrentThursday = Table.AddColumn(InsertWeekEnding, "CurrentThursday", each Date.AddDays([Date], -Date.DayOfWeek([Date],1) + 3), type date),
+		
+		    InsertISOWeekJan4 = Table.AddColumn(InsertCurrentThursday, "ISOWeekJan4", each Date.FromText(Number.ToText(Date.Year([CurrentThursday])) & "-01-04") ,type date),
+		
+		    InsertISOWeekYear = Table.AddColumn(InsertISOWeekJan4, "ISOWeekYear", each Date.Year([CurrentThursday])) ,  
+		
+		    InsertISOWeekFirstMon = Table.AddColumn(InsertISOWeekYear, "ISOWeekFirstMon", each
+		
+		        if [CurrentThursday] < [ISOWeekJan4]
+		
+		        then Date.AddDays([CurrentThursday],-3)
+		
+		        else Date.AddDays([ISOWeekJan4], - Date.DayOfWeek([ISOWeekJan4],1) )
+		
+		      ,type date),
+		
+		    InsertISOWeekNum = Table.AddColumn(InsertISOWeekFirstMon, "ISOWeekNum", each Number.RoundUp(((Duration.Days(Duration.From([Date] - [ISOWeekFirstMon]))+1) /7 )), type number),
+		
+		    InsertISOWeekID = Table.AddColumn(InsertISOWeekNum, "ISOWeekID", each [ISOWeekYear] * 100 + [ISOWeekNum], type number),
+		
+		    InsertISOWeekName = Table.AddColumn(InsertISOWeekID, "ISOWeekName", each Text.From([ISOWeekYear]) & "W" & Text.End( "0" & Text.From(([ISOWeekNum]*10)  + [DayInWeek]),3)),
+		
+		    InsertISOWeekNameLong = Table.AddColumn(InsertISOWeekName, "ISOWeekNameLong", each Text.From([ISOWeekYear]) & "-W" & Text.End( "0" & Text.From([ISOWeekNum]),2) & "-" & Text.From([DayInWeek])),
+		
+		 
+		
+		    fnPeriod445a = (weekNum) => let
+		
+		      Periods =
+		
+		        {
+		
+		            {(x)=>x<5,  [P=1,Q=1]},
+		
+		            {(x)=>x<9,  [P=2,Q=1]},
+		
+		            {(x)=>x<14, [P=3,Q=1]},
+		
+		            {(x)=>x<18, [P=4,Q=2]},
+		
+		            {(x)=>x<22, [P=5,Q=2]},
+		
+		            {(x)=>x<27, [P=6,Q=2]},
+		
+		            {(x)=>x<31, [P=7,Q=3]},
+		
+		            {(x)=>x<35, [P=8,Q=3]},
+		
+		            {(x)=>x<40, [P=9,Q=3]},
+		
+		            {(x)=>x<44, [P=10,Q=4]},
+		
+		            {(x)=>x<48, [P=11,Q=4]},
+		
+		            {(x)=>true, [P=12,Q=4]}
+		
+		        },
+		
+		      Result = List.First(List.Select(Periods, each _{0}(weekNum))){1}
+		
+		    in
+		
+		      Result,
+		
+		 
+		
+		    InsertPeriod445 = Table.AddColumn(InsertISOWeekNameLong, "Period445Record", each fnPeriod445a([ISOWeekNum])),
+		
+		    ExpandPeriod445 = Table.ExpandRecordColumn(InsertPeriod445, "Period445Record", {"P","Q" }, {"Period445", "Quarter445"}),
+		
+		    RemovedColumns = Table.RemoveColumns(ExpandPeriod445,{"CurrentThursday", "ISOWeekFirstMon"})
+		
+		  in
+		
+		    RemovedColumns
+		
+		in
+		
+		    CreateDateTable
+		```
+	lineageTag: 433777c5-fed3-417e-9c9a-d3aae79cdcb3
+	queryGroup: 'Funções e Parâmetros'
 
-	annotation PBI_NavigationStepName = Navigation
+	annotation PBI_ResultType = Function
 
-	annotation PBI_ResultType = Date
+expression DataInicio = #date(2022, 1, 1) meta [IsParameterQuery=true, Type="Date", IsParameterQueryRequired=true]
+	lineageTag: 46163dcb-ea0e-4380-b1da-40cea95cda42
+	queryGroup: 'Funções e Parâmetros'
 
-expression base_transacoes = "C:\Users\renat\Downloads\Material Referência_Estudo\Estudo PBIP\transacoes.xlsx" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
-	lineageTag: 10cad112-001c-44bb-9c20-485e05ab0fcf
-	queryGroup: Parâmetros
+	annotation PBI_ResultType = Exception
 
-	annotation PBI_NavigationStepName = Navigation
+	annotation PBI_NavigationStepName = Navegação
+
+expression Caminhopasta = "L:\powerbi-desenv\dashboard\comercial" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 44506bb5-2560-4afc-bc05-24e6d7844e4f
+	queryGroup: 'Funções e Parâmetros'
+
+	annotation PBI_NavigationStepName = Navegação
 
 	annotation PBI_ResultType = Text
 
-expression data_final =
+expression server = "192.168.200.205" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 2e564955-fe72-4e69-aed8-d7b837e9e053
+	queryGroup: 'Funções e Parâmetros'
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Text
+
+expression Banco = "DW_COMERCIAL" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: be33c153-9da1-48e2-a57f-260375fe33f7
+	queryGroup: 'Funções e Parâmetros'
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Text
+
+expression aux_filtro_dCliente =
 		let
-		    Source = DateTime.Date(DateTime.LocalNow())
+		    Fonte = Sql.Database(server, Banco, [CreateNavigationProperties=false, Query="SELECT DISTINCT [id_cliente] FROM fFaturamento #(lf)UNION #(lf)SELECT DISTINCT [id_cliente] FROM fDevolucao #(lf)UNION#(lf)SELECT DISTINCT [id_cliente] FROM fReclamacao#(lf)UNION#(lf)SELECT DISTINCT [id_cliente] FROM fMetas_artigo#(lf)UNION#(lf)SELECT DISTINCT [id_cliente] FROM fIQF#(lf)UNION#(lf)SELECT DISTINCT [id_cliente] FROM febitda_artigo_coml"])
 		in
-		    Source
-	lineageTag: 9a46835b-0754-4fdf-925e-c42b24b42509
-	queryGroup: Parâmetros
+		    Fonte
+	lineageTag: 675ecb51-4875-46fa-bd71-a678a8370ff0
 
-	annotation PBI_NavigationStepName = Navigation
+	annotation PBI_NavigationStepName = Navegação
 
-	annotation PBI_ResultType = Date
-
-expression getcotacoes = ```
-		let
-		    getCotacoes = (dataInicial as date, dataFinal as date, moeda as text, pagina as number) as table =>
-		    let
-		        url = "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata",
-		        endpoint = "CotacaoMoedaPeriodo(moeda=@moeda,dataInicial=@dataInicial,dataFinalCotacao=@dataFinalCotacao)",
-		        query = [
-		            #"@moeda" = "'" & moeda & "'",
-		            #"@dataInicial" = "'" &  Date.ToText(dataInicial,"MM-dd-yyyy") & "'",
-		            #"@dataFinalCotacao" = "'" & Date.ToText(dataFinal,"MM-dd-yyyy") & "'",
-		            #"$top" = Number.ToText(100),
-		            #"$skip" = Number.ToText((pagina-1)*100),
-		            #"$format"= "json"
-		        ],
-		        request = Web.Contents(
-		            url,
-		            [ RelativePath = endpoint, Query = query ]
-		        ),
-		        response = Json.Document(request, 65001), 
-		        lista = response[value] 
-		    in
-		        Table.FromRecords(lista), 
-		
-		    getCotacoesPaginacao = (dataInicial as date, dataFinal as date, moeda as text) as table =>
-		    let
-		        todasPaginas = List.Generate(
-		            ( ) => [ pagina = 1, cotacao = try getCotacoes(dataInicial, dataFinal, moeda, pagina) otherwise null ],
-		                each [cotacao] <> null and Table.RowCount([cotacao]) > 0,
-		                each [ pagina = [pagina] + 1, cotacao = try getCotacoes( dataInicial, dataFinal, moeda, pagina ) otherwise null],
-		                each [cotacao]
-		        ) 
-		    in
-		        Table.AddColumn(Table.Combine(todasPaginas), "Moeda", each moeda, type text),
-		
-		    processaCotacoes = (dataInicial as date, dataFinal as date) as table =>
-		    let
-		        moedas = List.Select(moedas[Moeda], each _ <> "BRL"),
-		
-		        todasCotacoes = List.Accumulate(
-		            moedas,
-		            #table({},{}),
-		            (s, c) => 
-		            Table.Combine({s, getCotacoesPaginacao(dataInicial, dataFinal, c)})
-		
-		        ),
-		
-		        colunasSelecionadas = Table.SelectColumns(
-		            todasCotacoes,
-		            { "Moeda", "dataHoraCotacao", "cotacaoCompra", "tipoBoletim" }
-		        ),
-		
-		        colunasRenomeadas = Table.RenameColumns(
-		            colunasSelecionadas,
-		            {
-		                {"dataHoraCotacao", "DataHora"},
-		                {"cotacaoCompra", "Cotacao"},
-		                {"tipoBoletim", "TipoBoletim"}
-		            }
-		        ),
-		
-		        tipoAlterado = Table.TransformColumnTypes(
-		            colunasRenomeadas,
-		            {
-		                {"DataHora", DateTime.Type},
-		                {"Cotacao", Number.Type}, 
-		                {"TipoBoletim", Text.Type}
-		            }
-		        ),
-		
-		        dataAdicionada = Table.AddColumn(
-		            tipoAlterado,
-		            "Data", 
-		            each DateTime.Date([DataHora]),
-		            type date
-		        )
-		
-		    in
-		        dataAdicionada   
-		
-		in
-		    processaCotacoes
-		```
-	lineageTag: 050cc905-4ade-4494-9e9f-5f5bc9d917bb
-	queryGroup: Funções
-
-	annotation PBI_NavigationStepName = Navigation
-
-	annotation PBI_ResultType = Function
+	annotation PBI_ResultType = Table
 

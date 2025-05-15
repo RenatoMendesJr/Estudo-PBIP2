@@ -1,0 +1,160 @@
+table pMetricas
+	isHidden
+	lineageTag: 7a817098-6f30-4b73-b96b-ed9225847d35
+
+	column Parâmetro
+		lineageTag: b1af80db-b98b-4b69-9929-eb4c1a43d507
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parâmetro Pedido'
+
+		relatedColumnDetails
+			groupByColumn: 'Parâmetro Campos'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parâmetro Campos'
+		isHidden
+		lineageTag: 44df4f76-3482-4430-81ae-1fc94e1fcb92
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parâmetro Pedido'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parâmetro Pedido'
+		isHidden
+		formatString: 0
+		lineageTag: 61095f93-d5dd-49fd-80cc-cfd82f86bd8d
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column pFiltro = ```
+			
+			VAR _selecao = [Parâmetro Pedido]
+			RETURN
+			SWITCH(
+			    _selecao,
+			    0, "PT",
+			    1, "PT", 
+			    2, "PT", 
+			    3, "PT", 
+			    4, "PT", 
+			    5, "PT", 
+			    6, "PT", 
+			    7, "PT", 
+			    8, "PT", 
+			    9, "PT", 
+			    10, "PT", 
+			    11, "PT", 
+			    12, "PT", 
+			    13, "PT",
+			    14, "EN", 
+			    15, "EN", 
+			    16, "EN", 
+			    17, "EN", 
+			    18, "EN", 
+			    19, "EN", 
+			    20, "EN", 
+			    21, "EN", 
+			    22, "EN", 
+			    23, "EN", 
+			    24, "EN", 
+			    25, "EN", 
+			    26, "EN", 
+			    27, "EN",
+			    28, "DE", 
+			    29, "DE", 
+			    30, "DE", 
+			    31, "DE", 
+			    32, "DE", 
+			    33, "DE", 
+			    34, "DE", 
+			    35, "DE", 
+			    36, "DE", 
+			    37, "DE", 
+			    38, "DE", 
+			    39, "DE", 
+			    40, "DE", 
+			    41, "DE",
+			    "PT"
+			)
+			
+			```
+		lineageTag: c7076419-b376-43bc-a6ab-347345ddb378
+		summarizeBy: none
+		sortByColumn: 'Parâmetro Pedido'
+
+		annotation SummarizationSetBy = Automatic
+
+	column Valor =
+			
+			VAR _Parametro = [Parâmetro]
+			RETURN
+			_Parametro
+		lineageTag: 5f515a67-a484-4e4b-a005-6474f2a90731
+		summarizeBy: none
+		sortByColumn: 'Parâmetro Pedido'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pMetricas = calculated
+		mode: import
+		source =
+				{
+				    ("Vendas no Mercado Local (t)", NAMEOF('_Medidas'[Local Market Sales (t)]), 0),
+				    ("Laminado a Frio (vendas: local + exportação) (t)", NAMEOF('_Medidas'[Cold Rolled (market Sales: Local + Export) (t)]), 1),
+				    ("Vendas para Exportação (t)", NAMEOF('_Medidas'[Export Market Sales (t)]), 2),
+				    ("Vendas de Serviço (KBRL)", NAMEOF('_Medidas'[Service Sales (KBRL)]), 3),
+				    ("Insatisfação do Cliente", NAMEOF('_Medidas'[Indice Insatisfação]), 4),
+				    ("Lucro Bruto Total (R$/t)", NAMEOF('_Medidas'[Gross Profit Total (R$/t)]), 5),
+				    ("Lucro Bruto Total (%)", NAMEOF('_Medidas'[Gross Profit (%)]), 6),
+				    ("Lucro Bruto - Laminado a Frio (R$/t)", NAMEOF('_Medidas'[Gross Profit - Cold Rolled (R$/t)]), 7),
+				    --("Projetos de Cliente", NAMEOF('_Medidas'[Customer Projects]), 8),
+				    ("Volumes de Vendas Revestidos (t)", NAMEOF('_Medidas'[Coated Sales Volumes (t)]), 9),
+				    ("Volumes de Vendas H&T (t)", NAMEOF('_Medidas'[H&T Sales Volumes (t)]), 10),
+				    ("Total de Vendas no Mercado (t)", NAMEOF('_Medidas'[Total Market Sales (t)]), 11),
+				    ("Faturamento Relaminado (R$)", NAMEOF('_Medidas'[Faturamento]), 12),
+				    ("Preço Médio (R$/kg)", NAMEOF('_Medidas'[Preco Medio]), 13),
+				
+				    ("Local Market Sales (t)", NAMEOF('_Medidas'[Local Market Sales (t)]), 14),
+				    ("Cold Rolled (market Sales: Local + Export) (t)", NAMEOF('_Medidas'[Cold Rolled (market Sales: Local + Export) (t)]), 15),
+				    ("Export Market Sales (t)", NAMEOF('_Medidas'[Export Market Sales (t)]), 16),
+				    ("Service Sales (KBRL)", NAMEOF('_Medidas'[Service Sales (KBRL)]), 17),
+				    ("Customer Insatisfaction", NAMEOF('_Medidas'[Indice Insatisfação]), 18),
+				    ("Gross Profit Total (R$/t)", NAMEOF('_Medidas'[Gross Profit Total (R$/t)]), 19),
+				    ("Gross Profit Total (%)", NAMEOF('_Medidas'[Gross Profit (%)]), 20),
+				    ("Gross Profit - Cold Rolled (R$/t)", NAMEOF('_Medidas'[Gross Profit - Cold Rolled (R$/t)]), 21),
+				    --("Customer Projects", NAMEOF('_Medidas'[Customer Projects]), 22),
+				    ("Coated Sales Volumes (t)", NAMEOF('_Medidas'[Coated Sales Volumes (t)]), 23),
+				    ("H&T Sales Volumes (t)", NAMEOF('_Medidas'[H&T Sales Volumes (t)]), 24),
+				    ("Total Market Sales (t)", NAMEOF('_Medidas'[Total Market Sales (t)]), 25),
+				    ("Rerolled Revenue (R$)", NAMEOF('_Medidas'[Faturamento]), 26),
+				    ("Avarage Price (R$/kg)", NAMEOF('_Medidas'[Preco Medio]), 27),
+				
+				    ("Lokale Marktverkäufe (t)", NAMEOF('_Medidas'[Local Market Sales (t)]), 28),
+				    ("Kaltgewalzt (Markt: lokal + Export) (t)", NAMEOF('_Medidas'[Cold Rolled (market Sales: Local + Export) (t)]), 29),
+				    ("Exportmarkt (t)", NAMEOF('_Medidas'[Export Market Sales (t)]), 30),
+				    ("Service (KBRL)", NAMEOF('_Medidas'[Service Sales (KBRL)]), 31),
+				    ("Kundenunzufriedenheit", NAMEOF('_Medidas'[Indice Insatisfação]), 32),
+				    ("Gesamte Bruttogewinn (R$/t)", NAMEOF('_Medidas'[Gross Profit Total (R$/t)]), 33),
+				    ("Gesamte Bruttogewinn (%)", NAMEOF('_Medidas'[Gross Profit (%)]), 34),
+				    ("Bruttogewinn - Kaltgewalzt (R$/t)", NAMEOF('_Medidas'[Gross Profit - Cold Rolled (R$/t)]), 35),
+				    --("Kundenprojekte", NAMEOF('_Medidas'[Customer Projects]), 36),
+				    ("Coated Verkaufsvolumen (t)", NAMEOF('_Medidas'[Coated Sales Volumes (t)]), 37),
+				    ("H&T Verkaufsvolumen (t)", NAMEOF('_Medidas'[H&T Sales Volumes (t)]), 38),
+				    ("Gesamte Marktverkäufe (t)", NAMEOF('_Medidas'[Total Market Sales (t)]), 39),
+				    ("Relaminierte Umsatz (R$)", NAMEOF('_Medidas'[Faturamento]), 40),
+				    ("Durchschnittspreis (R$/kg)", NAMEOF('_Medidas'[Preco Medio]), 41)
+				}
+
+	annotation PBI_Id = 65f2817f75674585a686d8fd3d212dcd
+

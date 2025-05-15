@@ -1,0 +1,29 @@
+EVALUATE
+VAR _lista = CALCULATETABLE(VALUES(dCalendario[data]),SAMEPERIODLASTYEAR(dCalendario[data]))
+
+VAR __GrossMarginTotal_Invoiced = round([Gross Profit Total (R$/t)] ,2)
+VAR __GrossMarginTotal_Target = 1 
+VAR __GrossMarginTotal_Budget = 1 
+VAR __GrossMarginTotal_Forecast = 1 
+
+VAR __GrossMarginPercent_Invoiced = round([Gross Profit (%)] ,2)
+VAR __GrossMarginPercent_Target = 1 
+VAR __GrossMarginPercent_Budget = 1 
+VAR __GrossMarginPercent_Forecast = 1 
+
+VAR __Revenue_Invoiced = round([Faturamento] ,2)
+VAR __Revenue_Target = round([Faturamento_target] ,2) 
+VAR __Revenue_Budget = round([Faturamento_budget] ,2) 
+VAR __Revenue_Forecast = round([Faturamento_forecast] ,2) 
+VAR __Revenue_LY = round(CALCULATE([Faturamento] ,SAMEPERIODLASTYEAR(dCalendario[data])),2) 
+
+VAR __AveragePrice_Invoiced = round([Preco Medio],2)
+VAR __AveragePrice_LY = round(CALCULATE([Preco Medio] ,SAMEPERIODLASTYEAR(dCalendario[data])),2) 
+
+VAR __Peso_Invoiced = round([PesoFaturado],2)
+VAR __Peso_Target = round([Target Peso],2) 
+VAR __Peso_Budget = round([Budget Peso],2) 
+VAR __Peso_Forecast = round([Forecast Peso],2)
+VAR __Peso_LY = round(CALCULATE([PesoFaturado] ,SAMEPERIODLASTYEAR(dCalendario[data])),2) 
+VAR __Peso_LY1 = round(CALCULATE([PesoFaturado] ,_lista),2) 
+RETURN

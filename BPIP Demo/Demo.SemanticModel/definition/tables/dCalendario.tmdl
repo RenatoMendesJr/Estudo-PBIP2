@@ -1,0 +1,228 @@
+table dCalendario
+	lineageTag: d3dd3020-1676-459c-81af-4ea56120554b
+	dataCategory: Time
+
+	column data
+		dataType: dateTime
+		isKey
+		formatString: Short Date
+		lineageTag: 2bc11cfe-e703-4fa0-9b57-5c35594d9573
+		summarizeBy: none
+		sourceColumn: data
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column ano
+		dataType: int64
+		formatString: 0
+		lineageTag: 6506e92f-166b-4db9-bb8a-31a611bb0a4e
+		summarizeBy: sum
+		sourceColumn: ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column meses
+		dataType: int64
+		formatString: 0
+		lineageTag: 76068c13-2884-4ab3-83e8-e077e890acb9
+		summarizeBy: sum
+		sourceColumn: meses
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter_ano
+		dataType: string
+		lineageTag: 3034fb4f-9910-4ce8-97c1-b1cbad7ed579
+		summarizeBy: none
+		sourceColumn: quarter_ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column dia_na_semana
+		dataType: int64
+		formatString: 0
+		lineageTag: c5d9a790-cdb8-44d6-b887-02e4379f1ee0
+		summarizeBy: sum
+		sourceColumn: dia_na_semana
+
+		annotation SummarizationSetBy = Automatic
+
+	column mes_ano_abreviado
+		dataType: string
+		lineageTag: b7cb4d23-f8a1-407c-9ee4-9187e22e9e0d
+		summarizeBy: none
+		sourceColumn: mes_ano_abreviado
+		sortByColumn: ano_mes_numerico
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column semana_do_ano
+		dataType: int64
+		formatString: 0
+		lineageTag: 91bf665e-587c-4c23-94a4-30be39adec90
+		summarizeBy: sum
+		sourceColumn: semana_do_ano
+
+		annotation SummarizationSetBy = Automatic
+
+	column ano_mes_numerico
+		dataType: int64
+		formatString: 0
+		lineageTag: cb4e8d86-acf3-4236-8360-8ef0b63e86a4
+		summarizeBy: sum
+		sourceColumn: ano_mes_numerico
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter_numerico
+		dataType: int64
+		formatString: 0
+		lineageTag: 1de23203-ea08-44e5-a77d-76085bcc7212
+		summarizeBy: sum
+		sourceColumn: quarter_numerico
+
+		annotation SummarizationSetBy = Automatic
+
+	column nome_mes_abreviado
+		dataType: string
+		lineageTag: 4fab0dd4-3956-46df-817c-ed49e9089bfe
+		summarizeBy: none
+		sourceColumn: nome_mes_abreviado
+		sortByColumn: meses
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column semana_do_mes_ano_num
+		dataType: int64
+		formatString: 0
+		lineageTag: 098cc6aa-a3e1-4baf-8a25-3f2048046e20
+		summarizeBy: sum
+		sourceColumn: semana_do_mes_ano_num
+
+		annotation SummarizationSetBy = Automatic
+
+	column passado = dCalendario[data]<=TODAY()
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 57780b41-24ff-4a57-b2ab-fb305aeb9702
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column passado_ly =
+			
+			dCalendario[data] <= EDATE( TODAY(), -12 )
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ae034af7-6b46-42e0-ab61-a175e6e318b7
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column semana_do_ano_serial = ```
+			
+			VAR _MENORANO = MIN(dCalendario[ano])
+			
+			RETURN (dCalendario[ano] -_MENORANO) * 53 + dCalendario[semana_do_ano]
+			
+			```
+		formatString: 0
+		lineageTag: a9d0bbfe-730b-46b4-b9f9-5e69a87e40e2
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column mes_ano_abr_EN =
+			
+			SWITCH(
+			    [meses],
+			    2,SUBSTITUTE([nome_mes_abreviado],"FEV","FEB"),
+			    4,SUBSTITUTE([nome_mes_abreviado],"ABR","APR"),
+			    5,SUBSTITUTE([nome_mes_abreviado],"MAI","MAY"),
+			    8,SUBSTITUTE([nome_mes_abreviado],"AGO","AUG"),
+			    10,SUBSTITUTE([nome_mes_abreviado],"OUT","OCT"),
+			    12,SUBSTITUTE([nome_mes_abreviado],"DEZ","DEC"),
+			    [nome_mes_abreviado]
+			)
+		lineageTag: 1e5509c5-9efb-4e7c-9bdd-5b2c24045bc5
+		summarizeBy: none
+		sortByColumn: ano_mes_numerico
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column mes_ano_abr_DE =
+			
+			SWITCH(
+			    [meses],
+			    2,SUBSTITUTE([nome_mes_abreviado],"FEV","FEB"),
+			    3,SUBSTITUTE([nome_mes_abreviado],"MAR","MÄR"),
+			    4,SUBSTITUTE([nome_mes_abreviado],"ABR","APR"),
+			    8,SUBSTITUTE([nome_mes_abreviado],"AGO","AUG"),
+			    10,SUBSTITUTE([nome_mes_abreviado],"OUT","OKT"),
+			    [nome_mes_abreviado]
+			)
+		lineageTag: fad0e469-b824-4322-a568-b37571e9e33f
+		summarizeBy: none
+		sortByColumn: ano_mes_numerico
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dCalendario = m
+		mode: import
+		queryGroup: Dimensão
+		source =
+				let
+				
+				    MenorData = DataInicio,
+				
+				    MaiorData = Date.EndOfYear(Date.From(DateTime.LocalNow())) ,
+				
+				    Fonte = GeradorISO(MenorData, MaiorData, "pt-BR"),
+				
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"QuarterOfYear", Int64.Type}, {"MonthOfYear", Int64.Type}, {"FinYearNumber", Int64.Type}, {"FinMonth", Int64.Type}, {"FinQuarterNumber", Int64.Type}, {"Quarter445", type text}, {"Period445", Int64.Type}, {"ISOWeekNameLong", type text}, {"ISOWeekName", type text}, {"ISOWeekYear", type text}, {"QuarterInCalendar", type text}, {"MonthInCalendar", type text}, {"FinQuarter", type text}, {"DayOfMonth", Int64.Type}, {"DateInt", Int64.Type}, {"DayInWeek", Int64.Type}, {"Year", Int64.Type}, {"FinYear", type text}}),
+				
+				    #"Personalização Adicionada" = Table.AddColumn(#"Tipo Alterado", "AnoMês", each Text.Combine({Text.Start(Text.Proper([MonthName]), 3), "/", Text.Middle(Text.From([Year], "pt-BR"), 2)}), type text),
+				
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Personalização Adicionada",{{"Date", "Data"}, {"Year", "Ano"}}),
+				
+				    #"Coluna Personalizada Adicionada" = Table.AddColumn(#"Colunas Renomeadas", "Semana", each Text.Combine({Text.Middle([ISOWeekNameLong], 2, 2), Text.Middle([ISOWeekNameLong], 5, 3)}), type text),
+				
+				    #"Colunas Renomeadas1" = Table.RenameColumns(#"Coluna Personalizada Adicionada",{{"DayOfWeekName", "Dia da Semana"}}),
+				
+				    #"Prefixo Adicionado" = Table.TransformColumns(#"Colunas Renomeadas1", {{"Quarter445", each "Tri " & _, type text}}),
+				
+				    #"Semana do Ano Inserida" = Table.AddColumn(#"Prefixo Adicionado", "Semana do Ano", each Date.WeekOfYear([Data]), Int64.Type),
+				
+				    #"Personalização Adicionada2" = Table.AddColumn(#"Semana do Ano Inserida", "AnoMesNum", each Number.From([Ano]) * 100 + [MonthOfYear]),
+				
+				    #"Tipo Alterado1" = Table.TransformColumnTypes(#"Personalização Adicionada2",{{"AnoMesNum", Int64.Type}}),
+				
+				    #"Inserted Week of Month" = Table.AddColumn(#"Tipo Alterado1", "SemanaMes", each "S"&Text.From(Date.WeekOfMonth([Data])), type text),
+				    #"Colunas Renomeadas2" = Table.RenameColumns(#"Inserted Week of Month",{{"Data", "data"}, {"Ano", "ano"}, {"QuarterOfYear", "quarter"}, {"MonthOfYear", "meses"}}),
+				    #"Colunas Renomeadas3" = Table.RenameColumns(#"Colunas Renomeadas2",{{"DayOfMonth", "dia"}, {"DateInt", "data_inteira"}, {"MonthName", "nome_mes"}, {"MonthInCalendar", "mes_ano"}, {"QuarterInCalendar", "quarter_ano"}, {"DayInWeek", "dia_na_semana"}, {"Dia da Semana", "dia_da_semana"}, {"WeekEndingFriday", "final_semana"}, {"AnoMês", "mes_ano_abreviado"}, {"Semana", "semana"}, {"Semana do Ano", "semana_do_ano"}, {"AnoMesNum", "anao_mes_numerico"}, {"SemanaMes", "semana_do_mes"}}),
+				    #"Coluna Condicional Adicionada" = Table.AddColumn(#"Colunas Renomeadas3", "dia_semana_abreviado", each if [dia_da_semana] = "sábado" then "SAB" else if [dia_da_semana] = "domingo" then "DOM" else if [dia_da_semana] = "segunda-feira" then "SEG" else if [dia_da_semana] = "terça-feira" then "TER" else if [dia_da_semana] = "quarta-feira" then "QUA" else if [dia_da_semana] = "quinta-feira" then "QUI" else if [dia_da_semana] = "sexta-feira" then "SEX" else null, type text),
+				    #"Colunas Renomeadas4" = Table.RenameColumns(#"Coluna Condicional Adicionada",{{"anao_mes_numerico", "ano_mes_numerico"}}),
+				    #"Trimestre Inserido" = Table.AddColumn(#"Colunas Renomeadas4", "quarter_numerico", each Text.From([ano]) & Text.From(Date.QuarterOfYear([data]))),
+				    #"Tipo Alterado2" = Table.TransformColumnTypes(#"Trimestre Inserido",{{"quarter_numerico", Int64.Type}}),
+				    #"Primeiros Caracteres Inseridos" = Table.AddColumn(#"Tipo Alterado2", "nome_mes_abreviado", each Text.Start(Text.Upper([nome_mes]), 3), type text),
+				    #"Texto em Maiúscula" = Table.TransformColumns(#"Primeiros Caracteres Inseridos",{{"mes_ano_abreviado", Text.Upper, type text}, {"Quarter445", Text.Upper, type text}, {"dia_da_semana", Text.Upper, type text}, {"mes_ano", Text.Upper, type text}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Texto em Maiúscula",{"nome_mes"}),
+				    #"Personalização Adicionada1" = Table.AddColumn(#"Colunas Removidas", "semana_ano", each Text.Combine({Text.From([semana_do_ano]), "/", Text.Middle(Text.From([ano], "pt-BR"), 2)})),
+				    #"Inserted Merged Column" = Table.AddColumn(#"Personalização Adicionada1", "semana_do_mes_ano", each Text.Combine({[semana_do_mes],"/",[mes_ano_abreviado]}, ""), type text),
+				    #"Inserted Last Characters" = Table.AddColumn(#"Inserted Merged Column", "semana_do_mes_ano_num", each [ano_mes_numerico] * 10 + Number.FromText( Text.End([semana_do_mes], 1)), Int64.Type),
+				#"Columns removed by Measure Killer"= Table.SelectColumns(#"Inserted Last Characters",{"semana_do_ano","quarter_numerico","ano_mes_numerico","ano","data","mes_ano_abreviado","dia_na_semana","semana_do_mes_ano_num","quarter_ano","nome_mes_abreviado","meses"})
+				in
+				#"Columns removed by Measure Killer"
+
+	annotation PBI_ResultType = Exception
+
+	annotation PBI_NavigationStepName = Navegação
+

@@ -1,0 +1,116 @@
+table fReclamacao
+	lineageTag: ed0a9137-50af-4b28-9c3c-ed3aa8c88cfd
+
+	column id_reclamacao
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c0e24716-7b2f-4ada-8dc5-456abdfb6aa5
+		summarizeBy: sum
+		sourceColumn: id_reclamacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column data
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: a1a4f9f0-b8b8-4d64-b0ba-3659481f5e3b
+		summarizeBy: none
+		sourceColumn: data
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column id_cliente
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 56b6b0e8-5c60-4e09-9930-8ee8ad089cdb
+		summarizeBy: none
+		sourceColumn: id_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_pedido
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 8394f7be-0665-4a18-af53-096e8624a71b
+		summarizeBy: none
+		sourceColumn: id_pedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_decisao
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 1baf4d0b-9750-4721-9915-bf66c3671707
+		summarizeBy: none
+		sourceColumn: id_decisao
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_nr_nota_fis
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c207d9c1-aa3a-42b2-b3b8-f8d271b316ff
+		summarizeBy: none
+		sourceColumn: id_nr_nota_fis
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_artigo
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 64e14508-f0e3-4576-9993-353283ee1180
+		summarizeBy: none
+		sourceColumn: id_artigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo_reclamacao
+		dataType: string
+		lineageTag: a845f658-ed36-46a1-86c5-83b25f99b73f
+		summarizeBy: none
+		sourceColumn: tipo_reclamacao
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_gerencia
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: ad589a99-1337-4dff-99cd-00d9e31d8544
+		summarizeBy: none
+		sourceColumn: id_gerencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column peso_reclamado
+		dataType: double
+		lineageTag: fb66d3b6-a031-4be2-90a1-4e77c0f186d9
+		summarizeBy: sum
+		sourceColumn: peso_reclamado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fReclamacao = m
+		mode: import
+		queryGroup: Fato
+		source =
+				let
+				    Fonte = Sql.Database(server, Banco, [CreateNavigationProperties=false, Query="Select * from vw_fReclamacao"]),
+				    Tipagem = Table.TransformColumnTypes(Fonte,{{"data", type date}})
+				in
+				    Tipagem
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Exception
+

@@ -1,16 +1,147 @@
-relationship AutoDetected_99a635e7-dde1-47a8-9393-516c16132e89
-	fromColumn: transacoes.Moeda
-	toColumn: moedas.Moeda
+relationship 9622ad02-f1af-ed30-6240-97be446ad54e
+	crossFilteringBehavior: bothDirections
+	fromColumn: dCalendario.data
+	toColumn: d_calendario_filtros.data
 
-relationship AutoDetected_c77e0845-a88a-4e7c-9669-da6ce7b1a75f
-	fromColumn: Cotacoes.Moeda
-	toColumn: moedas.Moeda
+relationship AutoDetected_80aff14a-56fa-40f7-8869-c0bfb133a53a
+	fromColumn: fFaturamento.id_cliente
+	toColumn: dClientes.id_cliente
 
-relationship e809ac6a-7d79-acdf-13ed-c2ef7574782e
-	fromColumn: Cotacoes.Data
-	toColumn: calendario.Data
+relationship AutoDetected_b4284cb6-5db8-4e20-b60d-3c501d8005e6
+	fromColumn: fReclamacao.id_cliente
+	toColumn: dClientes.id_cliente
 
-relationship 77404c22-c0bc-6181-a66d-35a918c7a8c9
-	fromColumn: transacoes.Data
-	toColumn: calendario.Data
+relationship AutoDetected_5668f5a1-544a-40fd-811e-20481aee80e6
+	fromColumn: fMetas_artigo.id_artigo
+	toColumn: dArtigo.id_artigo
+
+relationship AutoDetected_210d4621-973e-4ba3-b031-e739b43b8f4f
+	fromColumn: fReclamacao.id_decisao
+	toColumn: dDecisao_reclamacao.id_decisao
+
+relationship AutoDetected_06f047e6-fbde-46e1-ac67-3b1742950f21
+	fromColumn: fFaturamento.id_gerencia
+	toColumn: dGerencia.id_gerencia
+
+relationship AutoDetected_a3158566-dd32-4591-9ad0-36b0c67f019f
+	fromColumn: fFaturamento.id_pedido
+	toColumn: dPedidos.id_pedido
+
+relationship AutoDetected_caeebbbb-40ca-4f85-b17e-58c3e5593d4b
+	fromColumn: fReclamacao.id_pedido
+	toColumn: dPedidos.id_pedido
+
+relationship 45e91d36-a685-8439-22d4-22e5c097b366
+	fromColumn: fReclamacao.data
+	toColumn: dCalendario.data
+
+relationship ced7e1eb-dffe-1a82-9aed-bec20f36589b
+	fromColumn: fMetas_artigo.data
+	toColumn: dCalendario.data
+
+relationship ee43c83c-0907-e03c-6a3c-48b430ec1d33
+	fromColumn: fFaturamento.data_faturamento
+	toColumn: dCalendario.data
+
+relationship AutoDetected_5655890f-3632-45c6-958f-3d9fa49b16aa
+	fromColumn: febtida_artigo_coml.id_cliente
+	toColumn: dClientes.id_cliente
+
+relationship AutoDetected_f4e71e22-1a0e-4de0-92c7-60e61348e717
+	fromColumn: fIQF.id_cliente
+	toColumn: dClientes.id_cliente
+
+relationship AutoDetected_b85e4b2e-c41e-4dc3-beb5-344836009f7d
+	fromColumn: fFaturamento.id_artigo
+	toColumn: dArtigo.id_artigo
+
+relationship AutoDetected_48888cc9-09d5-49eb-a780-875805400053
+	fromColumn: febtida_artigo_coml.id_artigo
+	toColumn: dArtigo.id_artigo
+
+relationship AutoDetected_5ab070b7-9132-4218-806b-7d60bc9d10aa
+	fromColumn: febtida_artigo_coml.id_gerencia
+	toColumn: dGerencia.id_gerencia
+
+relationship AutoDetected_5ebb9a91-61a4-4ca1-996f-92c91cfa4ee2
+	fromColumn: fFaturamento.id_nr_nota_fis
+	toColumn: dNotaFiscal.id_nr_nota_fis
+
+relationship AutoDetected_1711c169-6a33-47c2-8fc5-8c01ce845e02
+	fromColumn: fReclamacao.id_nr_nota_fis
+	toColumn: dNotaFiscal.id_nr_nota_fis
+
+relationship f50e0f95-08e2-be70-0504-4636371caff3
+	fromColumn: fIQF.data
+	toColumn: dCalendario.data
+
+relationship AutoDetected_e4f8aac0-be52-4522-ae6d-23fef245b360
+	fromColumn: fMetas_artigo.id_cliente
+	toColumn: dClientes.id_cliente
+
+relationship 071e5a07-c2b0-ba0a-6fa0-8ce76bdaff30
+	fromColumn: fReclamacao.id_artigo
+	toColumn: dArtigo.id_artigo
+
+relationship dce79602-cf5d-ae0b-3b50-4dea3ec2e2b0
+	fromColumn: fDevolucao.data_devolucao
+	toColumn: dCalendario.data
+
+relationship 155706de-e6d9-517b-3a86-5eb1da18b1d7
+	fromColumn: fDevolucao.id_nr_nota_fis
+	toColumn: dNotaFiscal.id_nr_nota_fis
+
+relationship ca1ee365-b4a1-dbae-d5b1-ac80e56097e0
+	fromColumn: fDevolucao.id_pedido
+	toColumn: dPedidos.id_pedido
+
+relationship 3900478c-b2aa-7827-e51a-a6ac496c159e
+	fromColumn: fDevolucao.id_cliente
+	toColumn: dClientes.id_cliente
+
+relationship a7bd4a8b-ac6f-dc4f-52bf-ca706d6a2aaa
+	fromColumn: fDevolucao.id_gerencia
+	toColumn: dGerencia.id_gerencia
+
+relationship 65106163-75bb-db96-2f18-87e37c2a5269
+	fromColumn: fDevolucao.id_artigo
+	toColumn: dArtigo.id_artigo
+
+relationship AutoDetected_0d21c6e9-c2ac-42cc-8af1-d945357b081b
+	fromColumn: fReclamacao.id_gerencia
+	toColumn: dGerencia.id_gerencia
+
+relationship 0d53d98a-502e-2ed3-cc17-c37f0af187b5
+	fromColumn: febtida_artigo_coml.data
+	toColumn: dCalendario.data
+
+relationship AutoDetected_7454ec3a-41c3-4d63-b0a1-a4957e0d16c3
+	fromColumn: fIQF.id_gerencia
+	toColumn: dGerencia.id_gerencia
+
+relationship 4b2ea1f4-9bd1-8635-74d1-11747d8b1d81
+	fromColumn: fhelp.Idioma
+	toColumn: pIdioma.Abr
+
+relationship AutoDetected_d2f8a9f4-f516-42d1-874f-9ee45fecb84d
+	fromColumn: fDevolucao.id_motivodev
+	toColumn: dMotivoDevolucao.id_motivodev
+
+relationship a70de459-5b4a-3cef-022e-b6724e22ef21
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: pVisaoEBITDA_budget.'pVisaoEBITDA_budget Pedido'
+	toColumn: pVisaoEBITDA.'pVisaoEBITDA Pedido'
+
+relationship ad7f7791-a138-c453-bcbd-b66760fc88be
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: pValorVisaoEBITDA.'pValorVisaoEBITDA Pedido'
+	toColumn: pVisaoEBITDA.'pVisaoEBITDA Pedido'
+
+relationship 0818a988-51cb-5644-7caf-03c7e800059a
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: pVisaoEBITDA_forecast.'pVisaoEBITDA_forecast Pedido'
+	toColumn: pVisaoEBITDA.'pVisaoEBITDA Pedido'
 

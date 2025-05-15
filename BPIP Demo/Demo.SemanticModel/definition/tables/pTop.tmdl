@@ -1,0 +1,27 @@
+table pTop
+	isHidden
+	lineageTag: 4f5829f1-ffc5-4bb2-964e-b2a03a1f273f
+
+	measure 'Valor sTop' = SELECTEDVALUE('pTop'[sTop], 5)
+		formatString: 0
+		lineageTag: e550d870-ec67-45e2-af33-5f42b5c34faa
+
+	column sTop
+		formatString: 0
+		lineageTag: 6704af27-43ed-4f52-b453-da2ab1f45003
+		summarizeBy: none
+		sourceColumn: [Value]
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 0
+				}
+
+		annotation SummarizationSetBy = User
+
+	partition pTop = calculated
+		mode: import
+		source = GENERATESERIES(1, 20, 1)
+
+	annotation PBI_Id = f1b1a67dbb13458fbfca19592550e450
+

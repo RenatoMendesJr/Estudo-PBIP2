@@ -1,0 +1,56 @@
+table pValorVisaoEBITDA
+	isHidden
+	lineageTag: f3547472-b3ec-4b31-8d91-4809f8746d73
+
+	column pValorVisaoEBITDA
+		lineageTag: 2e6644c6-7ee8-407f-abeb-b80f4edafe48
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'pValorVisaoEBITDA Pedido'
+
+		relatedColumnDetails
+			groupByColumn: 'pValorVisaoEBITDA Campos'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'pValorVisaoEBITDA Campos'
+		isHidden
+		lineageTag: eaf6166d-5ef4-4b13-9f1b-453a6cb75b6d
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'pValorVisaoEBITDA Pedido'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'pValorVisaoEBITDA Pedido'
+		isHidden
+		formatString: 0
+		lineageTag: c26a5e60-1466-472f-b632-db588c7a5565
+		summarizeBy: none
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pValorVisaoEBITDA = calculated
+		mode: import
+		source =
+				{
+				    ("Atual", NAMEOF('_Medidas'[Gross Margin Comercial (EBITDA)]), 0),
+				    ("Atual", NAMEOF('_Medidas'[EBITDA COMERCIAL]), 1),
+				    ("Atual", NAMEOF('_Medidas'[Gross Profit Total (R$/t)]), 2),
+				    ("Actual", NAMEOF('_Medidas'[Gross Margin Comercial (EBITDA)]), 3),
+				    ("Actual", NAMEOF('_Medidas'[EBITDA COMERCIAL]), 4),
+				    ("Actual", NAMEOF('_Medidas'[Gross Profit Total (R$/t)]), 5),
+				    ("Aktuell", NAMEOF('_Medidas'[Gross Margin Comercial (EBITDA)]), 6),
+				    ("Aktuell", NAMEOF('_Medidas'[EBITDA COMERCIAL]), 7),
+				    ("Aktuell", NAMEOF('_Medidas'[Gross Profit Total (R$/t)]), 8)
+				}
+
+	annotation PBI_Id = 1b57349ab3844027a8b31d42da3b77df
+

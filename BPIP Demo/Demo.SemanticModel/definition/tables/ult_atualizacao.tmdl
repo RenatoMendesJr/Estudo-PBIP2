@@ -1,0 +1,63 @@
+table ult_atualizacao
+	lineageTag: 079bee06-f070-4bdc-9b18-faebfea32cf1
+
+	column PT
+		dataType: string
+		lineageTag: 4ab0950f-306a-47fd-9651-a4b9d3e8f1fd
+		summarizeBy: none
+		sourceColumn: PT
+
+		annotation SummarizationSetBy = Automatic
+
+	column DE
+		dataType: string
+		lineageTag: 014613c1-86ff-40f1-9ed0-2bb3d3115f0c
+		summarizeBy: none
+		sourceColumn: DE
+
+		annotation SummarizationSetBy = Automatic
+
+	column EN
+		dataType: string
+		lineageTag: daa8a5ca-f8ad-4391-98ec-f9c811987aa0
+		summarizeBy: none
+		sourceColumn: EN
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ult_atualizacao = m
+		mode: import
+		source = ```
+				let
+				    Fonte = DateTimeZone.SwitchZone(DateTimeZone.UtcNow(), -3),
+				    DataUltimaAtualizacao = Date.From(Fonte),
+				    HoraAtual = Time.From(Fonte),
+				    
+				    // Definição do horário de referência
+				    HorarioAtualizacao = 
+				        if HoraAtual > #time(12,30,0) then #time(12,30,0) 
+				        else if HoraAtual > #time(6,30,0) then #time(6,30,0) 
+				        else #time(6,30,0),  
+				    
+				    // Formatar a data e hora para exibição
+				    DataTexto = Date.ToText(DataUltimaAtualizacao, "dd/MM/yyyy"),
+				    HoraTexto = Time.ToText(HorarioAtualizacao, "HH:mm"),
+				    
+				    // Criar tabela com as colunas para cada idioma
+				    Tabela = #table(
+				        {"PT", "DE", "EN"},
+				        {
+				            { "Atualizações às 6:30 e 12:30. Última atualização: " & DataTexto & " às " & HoraTexto,  
+				              "Aktualisierungen um 6:30 und 12:30. Letzte Aktualisierung: " & DataTexto & " um " & HoraTexto,  
+				              "Updates at 6:30 and 12:30. Last update: " & DataTexto & " at " & HoraTexto }
+				        }
+				    )
+				    
+				in
+				    Tabela
+				```
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

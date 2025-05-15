@@ -1,0 +1,198 @@
+table febtida_artigo_coml
+	lineageTag: c474156b-bbeb-4743-9552-5f750e84b0e3
+
+	column id_artigo
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 933da3c0-42c6-4ceb-a589-e2b492f98b19
+		summarizeBy: none
+		sourceColumn: id_artigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_gerencia
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 85a4d37c-0de1-45a0-8fde-0d7a1cbd0b24
+		summarizeBy: none
+		sourceColumn: id_gerencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_cliente
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a08c401e-a106-47a7-8f2c-9054060e750e
+		summarizeBy: none
+		sourceColumn: id_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column data
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: cb7905a8-ec5a-4c78-85cf-341daa005765
+		summarizeBy: none
+		sourceColumn: data
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Peso_faturado
+		dataType: double
+		lineageTag: 7e63f91b-ae76-4f80-bd4a-14a70d6583c6
+		summarizeBy: sum
+		sourceColumn: Peso_faturado
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Peso_Sucata
+		dataType: double
+		lineageTag: ee04d998-8703-4274-8ef8-2b387cfa217c
+		summarizeBy: sum
+		sourceColumn: Peso_Sucata
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column receita_liquida
+		dataType: double
+		lineageTag: 6c89bc31-fb8a-4b75-9a4b-2ed56448475d
+		summarizeBy: sum
+		sourceColumn: receita_liquida
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column custo_mp_full
+		dataType: double
+		lineageTag: 06cd1fba-3137-4c4a-a7b9-62139dccc979
+		summarizeBy: sum
+		sourceColumn: custo_mp_full
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vlr_GGF_total
+		dataType: double
+		lineageTag: 07a1fd85-fc3d-4f9b-99c3-b89c6650fc52
+		summarizeBy: sum
+		sourceColumn: vlr_GGF_total
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column desp_adm
+		dataType: double
+		lineageTag: 6bd44e42-2b49-49c0-a01f-ad8e1745fac3
+		summarizeBy: sum
+		sourceColumn: desp_adm
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column desp_vendas
+		dataType: double
+		lineageTag: 491e12cb-a136-45ce-b20a-0e91957fa3c8
+		summarizeBy: sum
+		sourceColumn: desp_vendas
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column desp_frete
+		dataType: double
+		lineageTag: 8c18b09f-7acf-461a-9516-aeba7763236d
+		summarizeBy: sum
+		sourceColumn: desp_frete
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column desp_comissao
+		dataType: double
+		lineageTag: b6c2c48a-143b-48d6-b444-a393ab9d4e16
+		summarizeBy: sum
+		sourceColumn: desp_comissao
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column preco_por_ton
+		dataType: double
+		lineageTag: 46bd876f-6625-46cf-a3e4-5a2fa1667b37
+		summarizeBy: sum
+		sourceColumn: preco_por_ton
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vlr_negociado_sem_imposto
+		dataType: double
+		lineageTag: 270d9ab4-f358-4ad0-b214-ca1ae551fabb
+		summarizeBy: sum
+		sourceColumn: vlr_negociado_sem_imposto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column custo_vnd_total_sem_imposto
+		dataType: double
+		lineageTag: 4dd440eb-b49b-4318-9368-9a2dc3c32667
+		summarizeBy: sum
+		sourceColumn: custo_vnd_total_sem_imposto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column custo_vnd_marginal_sem_imposto
+		dataType: double
+		lineageTag: c2ee6424-0e49-4372-b072-9f222a59e828
+		summarizeBy: sum
+		sourceColumn: custo_vnd_marginal_sem_imposto
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column custo_marginal
+		dataType: double
+		lineageTag: 4ee373a5-b367-482d-a5f7-35674993353c
+		summarizeBy: sum
+		sourceColumn: custo_marginal
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition febtida_artigo_coml = m
+		mode: import
+		queryGroup: Fato
+		source =
+				let
+				    Fonte = Sql.Database(server, Banco, [CreateNavigationProperties=false, Query="Select * from vw_febitda_artigo_coml"]),
+				    Tipagem = Table.TransformColumnTypes(Fonte,{{"data", type date}})
+				in
+				    Tipagem
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

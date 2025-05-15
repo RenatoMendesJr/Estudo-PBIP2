@@ -1,0 +1,57 @@
+table fhelp
+	lineageTag: c4619113-3524-41d5-932d-54aef41b6c18
+
+	column Idioma
+		dataType: string
+		lineageTag: 29d0d06a-afd8-4d07-82c2-b57b713cad40
+		summarizeBy: none
+		sourceColumn: Idioma
+
+		annotation SummarizationSetBy = Automatic
+
+	column Página
+		dataType: string
+		lineageTag: 45c3e238-b369-4e2e-8c4b-a2873317c7f6
+		summarizeBy: none
+		sourceColumn: Página
+
+		annotation SummarizationSetBy = Automatic
+
+	column Descrição
+		dataType: string
+		lineageTag: 4764ec5e-baca-4c56-80df-e9ebe1a456c2
+		summarizeBy: none
+		sourceColumn: Descrição
+
+		annotation SummarizationSetBy = Automatic
+
+	column Métrica/termo
+		dataType: string
+		lineageTag: 8ec10318-80a5-4feb-afcd-aa25e1701f43
+		summarizeBy: none
+		sourceColumn: Métrica/termo
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fhelp = m
+		mode: import
+		queryGroup: Fato
+		source =
+				let
+				/*
+				    Fonte = Excel.Workbook(File.Contents(Caminhopasta&"\Exemplo de estrutura do menu de ajuda - Brasmetal.xlsx"), null, true),
+				    help_Sheet = Fonte{[Item="help",Kind="Sheet"]}[Data],
+				    //    Fonte = Sql.Database(server, Banco, [CreateNavigationProperties=false, Query="SELECT [data_pedido]#(lf)      ,[id_pedido]#(lf)      ,[data_faturamento]#(lf)      ,[id_artigo]#(lf)      ,[id_cliente]#(lf)      ,[id_gerencia]#(lf)      ,[id_nr_nota_fis]#(lf)      ,[peso_liq_kg]#(lf)      ,[vl_cofins]#(lf)      ,[vl_icms]#(lf)      ,[vl_ipi]#(lf)      ,[vl_pis]#(lf)      ,[vl_total_item]#(lf)  FROM [DW_COMERCIAL].[dbo].[fFaturamento]"]),
+				    #"Cabeçalhos Promovidos" = Table.PromoteHeaders(help_Sheet, [PromoteAllScalars=true]),
+				*/
+				    #"Cabeçalhos Promovidos"= Sql.Database(server, Banco, [CreateNavigationProperties=false, Query="Select * from vw_fHelp"]),
+				    #"Colunas Renomeadas" = Table.RenameColumns(#"Cabeçalhos Promovidos",{{"Pag", "Página"}, {"Termo", "Métrica/termo"}, {"Desc", "Descrição"}}),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(#"Colunas Renomeadas",{{"id", Int64.Type}, {"Painel", type text}, {"Página", type text}, {"Idioma", type text}, {"Métrica/termo", type text}, {"Descrição", type text}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"id", "Painel"})
+				in
+				    #"Colunas Removidas"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

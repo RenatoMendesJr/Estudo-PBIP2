@@ -1,0 +1,26 @@
+table dPedidos
+	lineageTag: eae855cb-6030-46f1-b238-02476714e6cf
+
+	column id_pedido
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c574d52c-b92a-4f84-a927-c9ee5a2a46a2
+		summarizeBy: none
+		sourceColumn: id_pedido
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dPedidos = m
+		mode: import
+		queryGroup: Dimensão
+		source =
+				let
+				    Fonte = Sql.Database(server, Banco, [CreateNavigationProperties=false, Query="Select * from vw_dPedidos"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

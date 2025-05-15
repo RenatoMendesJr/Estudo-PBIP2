@@ -1,0 +1,59 @@
+table Helper_EBITDA
+	isHidden
+	lineageTag: 59410fb2-d72e-48c8-8316-34459288c2bf
+
+	column Eixo_pt
+		dataType: string
+		lineageTag: ed256245-67b9-458f-9e8e-84fccaebe6f1
+		summarizeBy: none
+		sourceColumn: Eixo_pt
+		sortByColumn: Ordem
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Eixo_en
+		dataType: string
+		lineageTag: 391036d9-c8ec-4094-976e-53921ca4ca2b
+		summarizeBy: none
+		sourceColumn: Eixo_en
+		sortByColumn: Ordem
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Eixo_ge
+		dataType: string
+		lineageTag: a8951ef6-1430-4037-8c76-500ab13593b5
+		summarizeBy: none
+		sourceColumn: Eixo_ge
+		sortByColumn: Ordem
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordem
+		dataType: int64
+		formatString: 0
+		lineageTag: c85209fd-12f0-4d43-a21f-75f4c82be6e5
+		summarizeBy: sum
+		sourceColumn: Ordem
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Helper_EBITDA = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("ZY5bS8RADIX/yjDPi+AVfLR7qYtWF/Gt9CFbYxncTkqSccVfb2bAruBbzpeTc9K2fgOaGEaMSn7hX/ATY0KbnlCV0iig36bOfbdo/TKJkmt22QhH14AiBzi4JYka+9UfJjEauChXDfCAo6s4KRismURchiF7MlYas8fUdbmo643N2/hmfX8L7pEt+XAquCr2x9QzlXya83dM70Hn/AGPIeaLy3KxQplQQNzzhAx9oAhBbFukhji49deEUTDDCu0J3MvcelMy1tX2dXVnr43IvT1pixP6xx7ObL71XfcD", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Eixo_pt = _t, Eixo_en = _t, Eixo_ge = _t, Ordem = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{ {"Ordem", Int64.Type}})
+				in
+				    #"Tipo Alterado"
+
+	annotation PBI_ResultType = Table
+
+	annotation PBI_NavigationStepName = Navigation
+

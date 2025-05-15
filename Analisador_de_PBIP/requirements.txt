@@ -1,0 +1,5 @@
+Tkinter
+pandas
+openpyxl
+anytree
+jsonschema

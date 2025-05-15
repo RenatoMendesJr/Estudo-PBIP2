@@ -1,0 +1,62 @@
+table pBaseCorteTargetEbtida
+	isHidden
+	lineageTag: 4492aaa7-170a-49e5-bf01-5821226d0b44
+
+	column Campo
+		lineageTag: 6abfd805-3136-49a8-9e3d-ca4ee8c76d95
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Campo]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Indice
+		formatString: 0
+		lineageTag: 22aa352a-3070-44a3-bd92-ac72c9ea0b33
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Indice]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Campo DE' =
+			
+			SWITCH(
+			    [Indice],
+			    1,"Ben.",
+			    0,"Standard"
+			)
+		lineageTag: c5f035be-f8d5-4385-acd7-2de8455c58f1
+		summarizeBy: none
+		sortByColumn: Indice
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Campo EN' =
+			
+			SWITCH(
+			    [Indice],
+			    0,"Standard",
+			    1,"Custom"
+			)
+		lineageTag: 768d7480-1f61-48b9-b812-0c63596044be
+		summarizeBy: none
+		sortByColumn: Indice
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pBaseCorteTargetEbtida = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Campo",STRING,
+				    "Indice",INTEGER
+				    ,{
+				        {"Padrão", 0},
+				        {"Custom",1}
+				    }
+				)
+
+	annotation PBI_Id = 8e74933e17544072866bae23d1229f06
+

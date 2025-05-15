@@ -1,0 +1,131 @@
+table dClientes
+	lineageTag: 8c7bb759-8d02-4330-9511-5c7318fe831e
+
+	column id_cliente
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a5bbdeae-1dc3-4e00-b4a9-6db27b53f044
+		summarizeBy: none
+		sourceColumn: id_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column razao_social
+		dataType: string
+		lineageTag: d2d114c8-6791-4275-aa46-32a65b5c240f
+		summarizeBy: none
+		sourceColumn: razao_social
+
+		annotation SummarizationSetBy = Automatic
+
+	column nome_abreviado
+		dataType: string
+		lineageTag: 79ded451-3a8a-492b-9d8c-f06af1501d22
+		summarizeBy: none
+		sourceColumn: nome_abreviado
+
+		annotation SummarizationSetBy = Automatic
+
+	column pais
+		dataType: string
+		lineageTag: b6cc2ea5-0ad1-426c-84d9-c75bf8f681d1
+		dataCategory: Country
+		summarizeBy: none
+		sourceColumn: pais
+
+		annotation SummarizationSetBy = Automatic
+
+	column uf
+		dataType: string
+		lineageTag: 0012170f-578e-4bbd-a36c-f0d194d757e1
+		dataCategory: StateOrProvince
+		summarizeBy: none
+		sourceColumn: uf
+
+		annotation SummarizationSetBy = Automatic
+
+	column cidade
+		dataType: string
+		lineageTag: b6735ded-31d8-4070-806d-076ff4383204
+		dataCategory: City
+		summarizeBy: none
+		sourceColumn: cidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column mercado
+		dataType: string
+		lineageTag: 5e94114e-ead5-447b-9b41-ca35a784f2d4
+		summarizeBy: none
+		sourceColumn: mercado
+
+		annotation SummarizationSetBy = Automatic
+
+	column PrimeiraCompra
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 1c12dffb-8dbf-4b22-869f-f62121571760
+		summarizeBy: none
+		sourceColumn: PrimeiraCompra
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column UltimaCompra
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 051ef85a-4278-4c16-b3e7-7c2ee546dbfc
+		summarizeBy: none
+		sourceColumn: UltimaCompra
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DiasUltimaCompra
+		dataType: int64
+		formatString: 0
+		lineageTag: 483f3caf-e0f0-41cb-bf52-412ba62bbf51
+		summarizeBy: sum
+		sourceColumn: DiasUltimaCompra
+
+		annotation SummarizationSetBy = Automatic
+
+	column Cat_Ultima_Compra
+		dataType: string
+		lineageTag: 04773b66-42e7-4816-adc9-5912a3261834
+		summarizeBy: none
+		sourceColumn: Cat_Ultima_Compra
+		sortByColumn: Ordem
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordem
+		dataType: int64
+		formatString: 0
+		lineageTag: 4e5829a4-2896-4cfe-80e5-b923137664d5
+		summarizeBy: sum
+		sourceColumn: Ordem
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dClientes = m
+		mode: import
+		queryGroup: Dimensão
+		source =
+				let
+				    Fonte = Sql.Database(server, Banco, [CreateNavigationProperties=false, Query="Select * from vw_dClientes"]),
+				    Tipagem = Table.TransformColumnTypes(Fonte,{{"id_cliente", Int64.Type}, {"razao_social", type text}, {"nome_abreviado", type text}, {"pais", type text}, {"uf", type text}, {"cidade", type text}, {"mercado", type text}, {"PrimeiraCompra", type date}, {"UltimaCompra", type date}}),
+				    Filtrando_IDs = Table.SelectRows(Tipagem, each List.Contains(aux_filtro_dCliente[id_cliente], [id_cliente]))
+				
+				in
+				    Filtrando_IDs
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

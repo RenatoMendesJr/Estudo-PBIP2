@@ -1,0 +1,77 @@
+table ptiposegmentacao
+	lineageTag: fe0046c2-c306-42de-a77b-052c794df894
+
+	column 'Parâmetro tipo'
+		lineageTag: b0b24e5e-935d-48dc-9196-0f6c7c914fe6
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Parâmetro Pedido'
+
+		relatedColumnDetails
+			groupByColumn: 'Parâmetro Campos'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parâmetro Campos'
+		isHidden
+		lineageTag: e1e7c49e-1edc-4eb7-b310-8a2b0c304920
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Parâmetro Pedido'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Parâmetro Pedido'
+		isHidden
+		formatString: 0
+		lineageTag: 486bc35f-fdd1-4fd8-91f5-f380bbe268ae
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipoEn =
+			
+			SWITCH(
+			    [Parâmetro Pedido],
+			    0,"Technical",
+			    1,"Commercial",
+			    2,"Logistics"
+			)
+		lineageTag: c78b4be4-8f30-404a-8fb5-883560917024
+		summarizeBy: none
+		sortByColumn: 'Parâmetro Pedido'
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipoDE =
+			
+			SWITCH(
+			    [Parâmetro Pedido],
+			    0,"Technisch",
+			    1,"Kommerziell",
+			    2,"Logistik"
+			)
+		lineageTag: c6df228a-dfb6-4834-a450-7a4c40b6aa13
+		summarizeBy: none
+		sortByColumn: 'Parâmetro Pedido'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition ptiposegmentacao = calculated
+		mode: import
+		source =
+				{
+				    ("Tecnica", "Tecnica", 0),
+				    ("Comercial", "Comercial", 1),
+				    ("Logistica", "Logistica", 2)
+				}
+
+	annotation PBI_Id = e7133aa1876a4e2d91ddd353e5cd36e0
+

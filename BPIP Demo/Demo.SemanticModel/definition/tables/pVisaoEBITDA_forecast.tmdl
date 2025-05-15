@@ -1,0 +1,64 @@
+table pVisaoEBITDA_forecast
+	isHidden
+	lineageTag: 9e2c1b05-cab2-4112-9a90-a09b057acf41
+
+	column pVisaoEBITDA_forecast
+		lineageTag: e494bc05-5052-474c-b388-be41a7dcc2cb
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'pVisaoEBITDA_forecast Pedido'
+
+		relatedColumnDetails
+			groupByColumn: 'pVisaoEBITDA_forecast Campos'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'pVisaoEBITDA_forecast Campos'
+		isHidden
+		lineageTag: cf9022b1-7acb-40bb-ae8f-27f7fb51512b
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'pVisaoEBITDA_forecast Pedido'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'pVisaoEBITDA_forecast Pedido'
+		isHidden
+		formatString: 0
+		lineageTag: f9598157-fcf0-4d23-957c-d4d8a9f2d6e1
+		summarizeBy: none
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Value4
+		lineageTag: 5f0b98cf-b9ed-4ab0-8955-e98a91d7a2b7
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Value4]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pVisaoEBITDA_forecast = calculated
+		mode: import
+		source =
+				{
+				    ("Previsão", NAMEOF('_Medidas'[Gross Margin Comercial (EBITDA)_forecast]), 0,"Margem Bruta"),
+				    ("Previsão", NAMEOF('_Medidas'[EBITDA Comercial_forecast]), 1,"EBITDA"),
+				    ("Previsão", NAMEOF('_Medidas'[Gross Profit Comercial (EBITDA)_forecast]), 2,"Lucro Bruto (R$/t)"),
+				    ("Forecast", NAMEOF('_Medidas'[Gross Margin Comercial (EBITDA)_forecast]), 3,"Gross Margin"),
+				    ("Forecast", NAMEOF('_Medidas'[EBITDA Comercial_forecast]), 4,"EBITDA"),
+				    ("Forecast", NAMEOF('_Medidas'[Gross Profit Comercial (EBITDA)_forecast]), 5,"Gross Profit (R$/t)"),
+				    ("Forecast", NAMEOF('_Medidas'[Gross Margin Comercial (EBITDA)_forecast]), 6,"Bruttomarge"),
+				    ("Forecast", NAMEOF('_Medidas'[EBITDA Comercial_forecast]), 7,"EBITDA"),
+				    ("Forecast", NAMEOF('_Medidas'[Gross Profit Comercial (EBITDA)_forecast]), 8,"Bruttogewinn (R$/t)")
+				}
+
+	annotation PBI_Id = 95d6497b5f704550bfba3aaf9304013b
+

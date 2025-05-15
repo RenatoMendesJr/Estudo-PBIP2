@@ -1,0 +1,9 @@
+EVALUATE
+FILTER(
+    ADDCOLUMNS(
+        VALUES(dClientes[id_cliente]),
+        "@indice",
+       CALCULATE(SUM(fIQF[nota]))
+    )
+    ,[@indice]
+)

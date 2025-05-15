@@ -1,0 +1,138 @@
+table fMetas_artigo
+	lineageTag: f5ba06ec-cc4b-4c1d-9970-12cdf6de76da
+
+	column data
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: fc4b7b8b-2d8a-457d-a7e8-589407f3df0d
+		summarizeBy: none
+		sourceColumn: data
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column id_artigo
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 13e97a9f-8fe1-4296-894a-9c9cc2745bee
+		summarizeBy: none
+		sourceColumn: id_artigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column vlr_budget
+		dataType: double
+		lineageTag: 75eaed13-7f51-46f1-a669-a180142ff040
+		summarizeBy: sum
+		sourceColumn: vlr_budget
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vlr_target
+		dataType: double
+		lineageTag: 920bb1ea-d981-4a8f-8e63-5b6400266b8d
+		summarizeBy: sum
+		sourceColumn: vlr_target
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vlr_forecast
+		dataType: double
+		lineageTag: 3c97fa2f-3258-4bb7-8907-a1701eedd64e
+		summarizeBy: sum
+		sourceColumn: vlr_forecast
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column peso_budget
+		dataType: double
+		lineageTag: d0007caa-fa0c-481d-94d4-f152b794355b
+		summarizeBy: sum
+		sourceColumn: peso_budget
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column peso_target
+		dataType: double
+		lineageTag: fd9161ee-5508-402b-89f0-b9a02529476c
+		summarizeBy: sum
+		sourceColumn: peso_target
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column peso_forecast
+		dataType: double
+		lineageTag: f4086181-0567-4bc4-9547-b305b425efd8
+		summarizeBy: sum
+		sourceColumn: peso_forecast
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column id_cliente
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: f36bb7f9-517f-4e47-86c7-f044c6e682e7
+		summarizeBy: none
+		sourceColumn: id_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column cst_mp_budget
+		dataType: double
+		lineageTag: c6185129-7d32-448c-a4b3-264c08433a61
+		summarizeBy: sum
+		sourceColumn: cst_mp_budget
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cst_mp_target
+		dataType: double
+		lineageTag: f12f35e3-2947-4ff8-86a4-fc485b99891b
+		summarizeBy: sum
+		sourceColumn: cst_mp_target
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column cst_mp_forecast
+		dataType: double
+		lineageTag: 817b56ea-e120-430e-a36b-6ba555e64bfd
+		summarizeBy: sum
+		sourceColumn: cst_mp_forecast
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fMetas_artigo = m
+		mode: import
+		queryGroup: Fato
+		source =
+				let
+				    Fonte = Sql.Database(server, Banco, [CreateNavigationProperties=false, Query="Select * from vw_fMetas_artigo#(lf)"]),
+				    Tipagem = Table.TransformColumnTypes(Fonte,{{"data", type date}})
+				in
+				    Tipagem
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

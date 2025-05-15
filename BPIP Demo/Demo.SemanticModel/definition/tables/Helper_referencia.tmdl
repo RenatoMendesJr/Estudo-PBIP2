@@ -1,0 +1,58 @@
+table Helper_referencia
+	isHidden
+	lineageTag: 684f6e20-f438-4f2d-8184-9264f03a1f85
+
+	column Ordem
+		formatString: 0
+		lineageTag: e1b7d90e-280c-46d5-afc5-0a1a027279af
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Ordem]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Referência EN'
+		lineageTag: 1507992b-ff02-4493-a135-f53276b3a2ab
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Referência EN]
+		sortByColumn: Ordem
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Referência PT'
+		lineageTag: 999608d1-f5ee-4373-9e92-f829d6fefe55
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Referência PT]
+		sortByColumn: Ordem
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Referência DE'
+		lineageTag: 314e7a97-cb7d-4c32-b5c2-46a15a211699
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Referência DE]
+		sortByColumn: Ordem
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Helper_referencia = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Referência EN",STRING,
+				    "Referência PT",STRING,
+				    "Referência DE",STRING,
+				    "Ordem",INTEGER,
+				    {
+				        {"Budget","Orçamento","Budget",0},
+				        {"Target","Meta","Ziel",1},
+				        {"Actual","Atual","Aktuell",2}
+				    }
+				)
+
+	annotation PBI_Id = 5887791fc17b4de2b11a643d93345ca5
+

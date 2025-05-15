@@ -1,0 +1,58 @@
+table pRealTon
+	lineageTag: 84980bb5-89bc-4861-9703-1bc5ea79d334
+
+	column pRealTon
+		lineageTag: 422a7380-2a87-4382-9979-991e64286d03
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'pRealTon Pedido'
+
+		relatedColumnDetails
+			groupByColumn: 'pRealTon Campos'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'pRealTon Campos'
+		isHidden
+		lineageTag: b17fa4f6-cf40-45fe-b90e-c621983ad1f4
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'pRealTon Pedido'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'pRealTon Pedido'
+		isHidden
+		formatString: 0
+		lineageTag: 93568dd5-fb8c-4704-b3fc-98e65c3d69bc
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Seletor =
+			
+			VAR _selecao = pRealTon[pRealTon]
+			RETURN
+			IF(_selecao = "TON","t","R$")
+		lineageTag: c78edf47-c360-407d-85d6-e565c0fbd11c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pRealTon = calculated
+		mode: import
+		source =
+				{
+				    ("Ton", NAMEOF('_Medidas'[PesoFaturado]), 0),
+				    ("Real", NAMEOF('_Medidas'[Faturamento]), 1)
+				}
+
+	annotation PBI_Id = 8417203f650041019760957e73430f78
+

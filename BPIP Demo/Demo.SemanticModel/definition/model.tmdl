@@ -1,39 +1,76 @@
 model Model
-	culture: en-US
+	culture: pt-BR
 	defaultPowerBIDataSourceVersion: powerBI_V3
+	discourageImplicitMeasures
 	sourceQueryCulture: pt-BR
 	dataAccessOptions
 		legacyRedirects
 		returnErrorValuesAsNull
 
-queryGroup Parâmetros
+queryGroup Dimensão
 
 	annotation PBI_QueryGroupOrder = 0
 
-queryGroup Dimensões
+queryGroup Fato
 
 	annotation PBI_QueryGroupOrder = 1
 
-queryGroup Fatos
+queryGroup 'Funções e Parâmetros'
 
 	annotation PBI_QueryGroupOrder = 2
-
-queryGroup Funções
-
-	annotation PBI_QueryGroupOrder = 3
 
 annotation __PBI_TimeIntelligenceEnabled = 0
 
 annotation PBIDesktopVersion = 2.142.1277.0 (25.04)+014fde450f93691fc9537f0758d73d1c5df153ef
 
-annotation PBI_QueryOrder = ["data_inicial","base_transacoes","data_final","moedas","calendario","transacoes","getcotacoes","Cotacoes"]
+annotation PBI_QueryOrder = ["aux_filtro_dCliente","ult_atualizacao","_Medidas","GeradorISO","DataInicio","server","Banco","Caminhopasta","dClientes","dArtigo","dDecisao_reclamacao","dGerencia","dNotaFiscal","dPedidos","dCalendario","d_calendario_filtros","fFaturamento","fMetas_artigo","fReclamacao","febtida_artigo_coml","fIQF","Helper_EBITDA","fDevolucao","fMetas_Reclamacao","fhelp","dMotivoDevolucao"]
 
-annotation PBI_ProTooling = ["DevMode"]
+annotation __TEdtr = 1
 
-ref table moedas
-ref table calendario
-ref table transacoes
-ref table Cotacoes
+annotation PBI_ProTooling = ["CalcGroup","DaxQueryView_Desktop","TMDLView_Desktop","DevMode"]
 
-ref cultureInfo en-US
+ref table ult_atualizacao
+ref table _Medidas
+ref table dCalendario
+ref table d_calendario_filtros
+ref table c_filtros_temporias
+ref table dClientes
+ref table dArtigo
+ref table dDecisao_reclamacao
+ref table dGerencia
+ref table dNotaFiscal
+ref table dPedidos
+ref table fFaturamento
+ref table fMetas_artigo
+ref table fReclamacao
+ref table pMetricas
+ref table pSegmentos
+ref table pVisao
+ref table pFormato
+ref table pFaturamento
+ref table pMeta
+ref table pTop
+ref table febtida_artigo_coml
+ref table fIQF
+ref table pMelhorPior
+ref table Helper_EBITDA
+ref table pVisaoEBITDA
+ref table ptiposegmentacao
+ref table c_insatisfacao
+ref table pVisaoTargetEbtida
+ref table pBaseCorteTargetEbtida
+ref table Helper_Scorecard
+ref table Helper_referencia
+ref table pValorVisaoEBITDA
+ref table fDevolucao
+ref table fMetas_Reclamacao
+ref table pIdioma
+ref table pVisaoEBITDA_budget
+ref table pVisaoEBITDA_forecast
+ref table fhelp
+ref table dMotivoDevolucao
+ref table pRealTon
+ref table pReclamacao
+
+ref cultureInfo pt-BR
 

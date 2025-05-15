@@ -1,0 +1,65 @@
+table pVisaoTargetEbtida
+	isHidden
+	lineageTag: 7e396a7b-cbe0-433d-bc66-c9efda5a660d
+
+	column Campo
+		lineageTag: 80964dde-d8c3-4e31-aa11-eba6bcf340cf
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Campo]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Indice
+		formatString: 0
+		lineageTag: a281d690-2bd5-4370-8d14-3b72a8449bb5
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Indice]
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Campo En' =
+			
+			SWITCH(
+			    [Indice],
+			    0,"All",
+			    1,"Positive",
+			    2,"Negative"
+			)
+		lineageTag: e7f276a4-698f-443b-8fae-818aa23fc481
+		summarizeBy: none
+		sortByColumn: Indice
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Campo DE' =
+			
+			SWITCH(
+			    [Indice],
+			    0,"Alle",
+			    1,"Positiv",
+			    2,"Negativ"
+			)
+		lineageTag: ab61a138-5a23-4f39-b1f1-1da7834ab9dd
+		summarizeBy: none
+		sortByColumn: Indice
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pVisaoTargetEbtida = calculated
+		mode: import
+		source =
+				
+				DATATABLE(
+				    "Campo",STRING,
+				    "Indice",INTEGER
+				    ,{
+				        {"Todos", 0},
+				        {"Positivo",1},
+				        {"Negativo",2}
+				    }
+				)
+
+	annotation PBI_Id = b3d567cff3e54a5ea5791943c286c3a0
+

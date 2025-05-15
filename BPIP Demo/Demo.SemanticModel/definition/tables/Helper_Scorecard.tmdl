@@ -1,0 +1,80 @@
+table Helper_Scorecard
+	isHidden
+	lineageTag: 7c7daf76-83ca-4f60-b2cb-460f209f3d2e
+
+	column Ordem
+		formatString: 0
+		lineageTag: de1ec878-0a7c-4075-9dce-fcad241ae73e
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Ordem]
+
+		annotation SummarizationSetBy = Automatic
+
+	column mes_DE =
+			
+			VAR _mes = LOOKUPVALUE(dCalendario[mes_ano_abr_DE],dCalendario[mes_ano_abreviado],Helper_Scorecard[mes_ano_abreviado])
+			RETURN
+			IF(ISBLANK(_mes),"YTD",_mes)
+		lineageTag: 4db85a3e-b56b-4d17-bdaf-30edae1f6553
+		summarizeBy: none
+		sortByColumn: Ordem
+
+		annotation SummarizationSetBy = Automatic
+
+	column mes_EN =
+			
+			VAR _mes = LOOKUPVALUE(dCalendario[mes_ano_abr_EN],dCalendario[mes_ano_abreviado],Helper_Scorecard[mes_ano_abreviado])
+			RETURN
+			IF(ISBLANK(_mes),"YTD",_mes)
+		lineageTag: 29eb662c-10c0-46a3-960d-3bf1c18d7e81
+		summarizeBy: none
+		sortByColumn: Ordem
+
+		annotation SummarizationSetBy = Automatic
+
+	column mes_ano_abreviado
+		lineageTag: 512bb3ae-f311-40d6-94b9-763b325803df
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: dCalendario[mes_ano_abreviado]
+		sortByColumn: Ordem
+
+		annotation SummarizationSetBy = Automatic
+
+	column mes_ano_DE =
+			
+			VAR _mes_ano = Helper_Scorecard[mes_ano_abreviado]
+			RETURN
+			Helper_Scorecard[mes_DE]&IF(_mes_ano = "YTD","",RIGHT(_mes_ano,3))
+		lineageTag: ab53fb14-3f69-42ee-9a7c-b09e118d1c23
+		summarizeBy: none
+		sortByColumn: Ordem
+
+		annotation SummarizationSetBy = Automatic
+
+	column mes_ano_EN =
+			
+			VAR _mes_ano = Helper_Scorecard[mes_ano_abreviado]
+			RETURN
+			Helper_Scorecard[mes_EN]&IF(_mes_ano = "YTD","",RIGHT(_mes_ano,3))
+		lineageTag: 9e7caa70-c6bd-450c-a449-b819c0ac977e
+		summarizeBy: none
+		sortByColumn: Ordem
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Helper_Scorecard = calculated
+		mode: import
+		source =
+				
+				UNION(
+					ADDCOLUMNS(
+						ALLSELECTED(dCalendario[mes_ano_abreviado]),
+						"Ordem",ROWNUMBER(SUMMARIZECOLUMNS(dCalendario[ano_mes_numerico]))
+					)
+					,DATATABLE("mes_ano_abreviado",STRING,"Ordem",INTEGER,{{"YTD",0}})
+				)
+
+	annotation PBI_Id = 5998b064b5fd4399a697b8c3bb95991b
+

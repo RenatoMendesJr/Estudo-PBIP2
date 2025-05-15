@@ -1,0 +1,149 @@
+table fFaturamento
+	lineageTag: 015081a0-1640-4452-aea1-c395c117a7d9
+
+	column data_faturamento
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: b7470ade-89dd-40e6-bd66-1312438b89e2
+		summarizeBy: none
+		sourceColumn: data_faturamento
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column data_pedido
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 2eb5dd88-274f-4f41-98b0-b6475047326f
+		summarizeBy: none
+		sourceColumn: data_pedido
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column id_cliente
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 3ab06260-52a2-42af-980a-edead3f182c3
+		summarizeBy: none
+		sourceColumn: id_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_gerencia
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: de24684f-a9af-4be0-a87b-11aeda4a8a38
+		summarizeBy: none
+		sourceColumn: id_gerencia
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_pedido
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: a29de383-ca51-4ba1-9e2e-c0d36121d6c7
+		summarizeBy: none
+		sourceColumn: id_pedido
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_artigo
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 606a5a99-48ad-4a10-b843-4e6bf05844f9
+		summarizeBy: none
+		sourceColumn: id_artigo
+
+		annotation SummarizationSetBy = Automatic
+
+	column id_nr_nota_fis
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: c90ff517-78ae-43d0-a41f-95d0b127311e
+		summarizeBy: none
+		sourceColumn: id_nr_nota_fis
+
+		annotation SummarizationSetBy = Automatic
+
+	column peso_liq_kg
+		dataType: double
+		lineageTag: 80eec92c-4c1f-4ca7-82bb-e2064c7956ab
+		summarizeBy: sum
+		sourceColumn: peso_liq_kg
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_cofins
+		dataType: double
+		lineageTag: 3b50a57c-0e9c-446c-9a88-7dc52952b376
+		summarizeBy: sum
+		sourceColumn: vl_cofins
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_icms
+		dataType: double
+		lineageTag: 69f508ab-930f-4aaf-b0bd-0f95362f48e7
+		summarizeBy: sum
+		sourceColumn: vl_icms
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_ipi
+		dataType: double
+		lineageTag: bbc27eda-9909-4fc6-bf68-4ce0704aa2ec
+		summarizeBy: sum
+		sourceColumn: vl_ipi
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_pis
+		dataType: double
+		lineageTag: aea4521d-0e5b-4238-882a-a399bf198521
+		summarizeBy: sum
+		sourceColumn: vl_pis
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vl_total_item
+		dataType: double
+		lineageTag: 6b85097b-5338-43b9-89d6-1c90f05acff6
+		summarizeBy: sum
+		sourceColumn: vl_total_item
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition fFaturamento = m
+		mode: import
+		queryGroup: Fato
+		source =
+				let
+				    Fonte = Sql.Database(server, Banco, [CreateNavigationProperties=false, Query="Select * from vw_fFaturamento"]),
+				    Tipagem = Table.TransformColumnTypes(Fonte,{{"data_pedido", type date}, {"data_faturamento", type date}})
+				in
+				    Tipagem
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

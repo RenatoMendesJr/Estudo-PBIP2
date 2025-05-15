@@ -1,0 +1,34 @@
+table dMotivoDevolucao
+	lineageTag: 941be78d-d3f4-41fc-bd00-1e1ac3a9a7df
+
+	column id_motivodev
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 728df305-9763-4dd0-8727-d06d203fcd90
+		summarizeBy: none
+		sourceColumn: id_motivodev
+
+		annotation SummarizationSetBy = Automatic
+
+	column descr_motivdev
+		dataType: string
+		lineageTag: b3e815fd-9a74-491b-a52f-5021ce56c64d
+		summarizeBy: none
+		sourceColumn: descr_motivdev
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dMotivoDevolucao = m
+		mode: import
+		queryGroup: Dimensão
+		source =
+				let
+				    Fonte = Sql.Database(server, Banco, [CreateNavigationProperties=false, Query="Select * from vw_dmotivodev"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,64 @@
+table d_calendario_filtros
+	lineageTag: 5ad9c14f-b89f-4b26-a25b-da43cb05ad03
+
+	column data
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: d4a7f84c-d5a7-4bbd-bd4f-af0d303f8bdd
+		summarizeBy: none
+		sourceColumn: data
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column dia_na_semana
+		dataType: int64
+		formatString: 0
+		lineageTag: b4123229-a236-492d-9b00-2fa5c6397fc2
+		summarizeBy: none
+		sourceColumn: dia_na_semana
+
+		annotation SummarizationSetBy = Automatic
+
+	column ano_mes_numerico
+		dataType: int64
+		formatString: 0
+		lineageTag: 4e95091a-158a-4e72-af42-06546326103d
+		summarizeBy: none
+		sourceColumn: ano_mes_numerico
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter_numerico
+		dataType: int64
+		formatString: 0
+		lineageTag: 97f2ca58-a1b0-457c-8fa3-5035b9e83a9e
+		summarizeBy: none
+		sourceColumn: quarter_numerico
+
+		annotation SummarizationSetBy = Automatic
+
+	column semana_do_mes_ano_num
+		dataType: int64
+		formatString: 0
+		lineageTag: 80953a1b-75e8-41ed-b473-52d7627997cb
+		summarizeBy: none
+		sourceColumn: semana_do_mes_ano_num
+
+		annotation SummarizationSetBy = Automatic
+
+	partition d_calendario_filtros = m
+		mode: import
+		queryGroup: Dimensão
+		source =
+				let
+				    Fonte = dCalendario,
+				   SelecionandoColunas = Table.SelectColumns(Fonte,{"quarter_numerico", "ano_mes_numerico", "data", "dia_na_semana", "semana_do_mes_ano_num"})
+				in
+				    SelecionandoColunas
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

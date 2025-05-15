@@ -1,0 +1,70 @@
+table pVisaoEBITDA
+	isHidden
+	lineageTag: 10bb6d8f-85ac-4e39-b2db-7d4bed45e09c
+
+	column pVisaoEBITDA
+		lineageTag: 4e0fea1d-6a14-456f-a159-413f6a36fb1e
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'pVisaoEBITDA Pedido'
+
+		relatedColumnDetails
+			groupByColumn: 'pVisaoEBITDA Campos'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'pVisaoEBITDA Campos'
+		isHidden
+		lineageTag: cec62f54-5dc8-46de-80d5-c27b9ec19b89
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'pVisaoEBITDA Pedido'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'pVisaoEBITDA Pedido'
+		formatString: 0
+		lineageTag: 3dd9bad9-3c75-4339-9c2c-8dfd08c7c841
+		summarizeBy: none
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Target
+		lineageTag: 5ece7402-ab4b-4015-bc9d-00b285a85809
+		summarizeBy: none
+		sourceColumn: [Value4]
+		sortByColumn: Ordem
+
+		annotation SummarizationSetBy = Automatic
+
+	column Ordem = [pVisaoEBITDA Pedido]
+		formatString: 0
+		lineageTag: 64e119f6-9c26-4d0e-bb0e-7ce4c89a6de1
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition pVisaoEBITDA = calculated
+		mode: import
+		source =
+				{
+				    ("Meta", NAMEOF([Gross Margin Comercial (EBITDA)_target]), 0,"Margem Bruta"),
+				    ("Meta", NAMEOF([EBITDA Comercial_target]), 1,"EBITDA"),
+				    ("Meta", NAMEOF([Gross Profit Comercial (EBITDA)_target]), 2,"Lucro Bruto (R$/t)"),
+				    ("Target", NAMEOF([Gross Margin Comercial (EBITDA)_target]), 3,"Gross Margin"),
+				    ("Target", NAMEOF([EBITDA Comercial_target]), 4,"EBITDA"),
+				    ("Target", NAMEOF([Gross Profit Comercial (EBITDA)_target]), 5,"Gross Profit (R$/t)"),
+				    ("Ziel", NAMEOF([Gross Margin Comercial (EBITDA)_target]), 6,"Bruttomarge"),
+				    ("Ziel", NAMEOF([EBITDA Comercial_target]), 7,"EBITDA"),
+				    ("Ziel", NAMEOF([Gross Profit Comercial (EBITDA)_target]), 8,"Bruttogewinn (R$/t)")
+				}
+
+	annotation PBI_Id = 13e8169130a3428da9685ac3a26d43da
+

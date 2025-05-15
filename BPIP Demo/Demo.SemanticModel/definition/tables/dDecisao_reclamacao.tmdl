@@ -1,0 +1,42 @@
+table dDecisao_reclamacao
+	lineageTag: c3cef55b-17d1-4233-b271-16cdf8147a09
+
+	column id_decisao
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 717e561c-ce64-4a16-9abe-f4b01c4afe29
+		summarizeBy: none
+		sourceColumn: id_decisao
+
+		annotation SummarizationSetBy = Automatic
+
+	column descricao
+		dataType: string
+		lineageTag: 1bf21698-ebc6-4c43-886a-0baa63b7dd68
+		summarizeBy: none
+		sourceColumn: descricao
+
+		annotation SummarizationSetBy = Automatic
+
+	column abrev
+		dataType: string
+		lineageTag: d6946e53-ead1-4d0b-8ae1-7a3a444cf4b0
+		summarizeBy: none
+		sourceColumn: abrev
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dDecisao_reclamacao = m
+		mode: import
+		queryGroup: Dimensão
+		source =
+				let
+				    Fonte = Sql.Database(server, Banco, [CreateNavigationProperties=false, Query="Select * from vw_dDecisao_reclamacao"])
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+
